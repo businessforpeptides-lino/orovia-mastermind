@@ -1,0 +1,279 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================================
+   DESIGN TOKENS — Charcoal + Brushed Gold
+============================================================================ */
+:root {
+  /* Core palette */
+  --bg:             #141414;
+  --charcoal:       #141414;
+  --charcoal-2:     #1c1c1c;
+  --charcoal-3:     #0e0e0e;
+  --charcoal-deep:  #0c0c0c;
+
+  /* Brushed gold */
+  --gold:           #D4AF37;
+  --gold-bright:    #f0d068;
+  --gold-cream:     #e8c558;
+  --gold-deep:      #8a7124;
+  --gold-shadow:    #3d3110;
+  --gold-muted:     #9A9080;
+
+  /* Cream (label / readable text on cream surfaces) */
+  --cream:          #f5e9c8;
+
+  /* Cost reveal palette */
+  --bg-cost:        #060303;
+  --bg-cost-glow:   #350a0a;
+  --red:            #ff0a0a;
+  --red-bright:     #ff2828;
+
+  /* Default text on dark */
+  --white:          #f4ede0;
+  --body:           rgba(244, 237, 224, 0.6);
+
+  /* Legacy tokens kept so old refs don't break */
+  --bg-warm:        #1c1c1c;
+  --wordmark:       #1F1A14;
+  --silver-1:       #2A2A2D;
+  --silver-2:       #6E6E72;
+  --silver-3:       #8C8C8C;
+  --shadow-warm:    #2A2520;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--charcoal);
+}
+
+body {
+  background: transparent;
+  color: var(--white);
+  font-family: var(--font-inter-tight), 'Inter Tight', system-ui, sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.025em;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Default treatment for headlines / display copy across the site.
+   Override only with explicit fontWeight where lighter weight is needed. */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-inter-tight), 'Inter Tight', system-ui, sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.025em;
+}
+
+.font-display,
+.font-body,
+.font-script {
+  font-family: var(--font-inter-tight), 'Inter Tight', system-ui, sans-serif;
+}
+.font-wordmark { font-family: var(--font-wordmark), Impact, sans-serif; }
+.font-mono     { font-family: var(--font-mono),     ui-monospace, 'SF Mono', Menlo, monospace; }
+
+/* ============================================================================
+   ANIMATED GRADIENT MESH BACKGROUND
+============================================================================ */
+.gradient-mesh {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 30%, rgba(110, 110, 114, 0.18), transparent 60%),
+    radial-gradient(ellipse 70% 50% at 80% 70%, rgba(140, 140, 140, 0.12), transparent 60%),
+    radial-gradient(ellipse 60% 80% at 50% 50%, rgba(42, 42, 45, 0.4), transparent 70%),
+    #0A0A0A;
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+.gradient-orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: -1;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* ============================================================================
+   FILM GRAIN OVERLAY
+============================================================================ */
+.film-grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: overlay;
+  opacity: 0.06;
+}
+
+/* ============================================================================
+   LIQUID GLASS UTILITY
+============================================================================ */
+.liquid-glass {
+  background: rgba(255, 255, 255, 0.01);
+  background-blend-mode: luminosity;
+  backdrop-filter: blur(24px) saturate(140%);
+  -webkit-backdrop-filter: blur(24px) saturate(140%);
+  border: none;
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.08),
+    0 32px 60px rgba(0, 0, 0, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.liquid-glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.4px;
+  background: linear-gradient(
+    180deg,
+    rgba(201, 169, 97, 0.35) 0%,
+    rgba(255, 255, 255, 0.12) 20%,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, 0) 60%,
+    rgba(255, 255, 255, 0.12) 80%,
+    rgba(201, 169, 97, 0.35) 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* ============================================================================
+   CLIPPED-CORNER CTA BUTTON
+============================================================================ */
+.btn-clipped {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
+  padding: 16px 36px;
+  font-family: var(--font-body), 'Helvetica Neue', Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: 0;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s;
+  text-decoration: none;
+}
+
+.btn-clipped--gold {
+  background: var(--gold);
+  color: var(--bg);
+}
+
+.btn-clipped--gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 40px rgba(201, 169, 97, 0.4);
+}
+
+.btn-clipped--ghost {
+  background: transparent;
+  color: var(--cream);
+  box-shadow: inset 0 0 0 1px rgba(201, 169, 97, 0.3);
+}
+
+.btn-clipped--ghost:hover {
+  box-shadow: inset 0 0 0 1px rgba(201, 169, 97, 0.6), 0 0 24px rgba(201, 169, 97, 0.2);
+}
+
+/* ============================================================================
+   GOLD SHIMMER TEXT
+============================================================================ */
+.gold-shimmer {
+  background: linear-gradient(
+    100deg,
+    var(--gold) 30%,
+    #F4E5B8 45%,
+    #FFF8E0 50%,
+    #F4E5B8 55%,
+    var(--gold) 70%
+  );
+  background-size: 250% 100%;
+  background-position: -50% 0;
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer-sweep 4.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes shimmer-sweep {
+  0%, 30%   { background-position: 200% 0; }
+  60%, 100% { background-position: -50% 0; }
+}
+
+/* ============================================================================
+   GOLD PULSE DOT
+============================================================================ */
+.gold-pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 8px rgba(201, 169, 97, 0.7);
+  animation: gold-pulse 2s ease-in-out infinite;
+}
+
+.gold-pulse-dot--sm {
+  width: 6px;
+  height: 6px;
+}
+
+@keyframes gold-pulse {
+  0%, 100% { opacity: 1;   transform: scale(1); }
+  50%      { opacity: 0.5; transform: scale(0.85); }
+}
+
+/* ============================================================================
+   CHIP BOB ANIMATIONS (hero side chips, never sync)
+============================================================================ */
+@keyframes chip-bob-a {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+@keyframes chip-bob-b {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+
+.chip-bob-a { animation: chip-bob-a 5s ease-in-out infinite alternate; }
+.chip-bob-b { animation: chip-bob-b 5s ease-in-out infinite alternate; animation-delay: -2.5s; }
+
+/* ============================================================================
+   VIAL FLOATING BOB (NEW ERA section)
+============================================================================ */
+@keyframes vial-bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+.vial-bob {
+  animation: vial-bob 4.5s cubic-bezier(0.4, 0, 0.6, 1) infinite alternate;
+}
+
+/* ============================================================================
+   HIGHLIGHT — italic serif accent (Fraunces Italic / Tiempos-grade)
+   Lighter touch than the old script setup (no descender padding needed).
+============================================================================ */
+.script-line {
+  display: inline-block;
+  font-style: italic;
+}
+
+/* ============================================================================
+   SCROLLBAR (subtle)
+============================================================================ */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #0A0A0A; }
+::-webkit-scrollbar-thumb { background: #2A2A2D; border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: #3A3A3D; }

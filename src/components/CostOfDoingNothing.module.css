@@ -1,0 +1,392 @@
+/* =====================================================================
+   COST OF DOING NOTHING — Scroll-flip section
+   ===================================================================== */
+
+/* ── SCROLL STAGE ── */
+.pinStage {
+  position: relative;
+  height: 250vh;
+  perspective: 2400px;
+}
+
+/* ── STICKY COIN ── */
+.pinTarget {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* ── preserve-3d WRAPPER ── */
+.flipCard {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+}
+
+/* ── SHARED FACE STYLES ── */
+.flipFace {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 48px 24px 80px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transition:
+    transform 0.55s cubic-bezier(0.44, 0, 0.56, 1),
+    opacity   0.55s cubic-bezier(0.44, 0, 0.56, 1);
+}
+
+.isAnimating .flipFace {
+  will-change: transform, opacity;
+}
+
+/* ── FRONT FACE ── */
+.frontFace {
+  z-index: 3;
+  background: linear-gradient(113deg, rgb(45, 8, 8) 0%, rgb(13, 13, 13) 100%);
+  transform: rotateX(0deg);
+  opacity: 1;
+}
+
+/* ── BACK FACE ── */
+.backFace {
+  z-index: 2;
+  background:
+    radial-gradient(ellipse 65% 50% at 50% 0%, rgba(212, 175, 55, 0.20), transparent 70%),
+    #141414;
+  transform: rotateX(180deg);
+  opacity: 0;
+}
+
+/* ── FLIPPED STATE ── */
+.isFlipped .frontFace { transform: rotateX(-180deg); opacity: 0; }
+.isFlipped .backFace  { transform: rotateX(0deg);    opacity: 1; }
+
+/* ═══════════════════════════════════════════════════════════════════
+   MONEY BILLS (background layer)
+   ═══════════════════════════════════════════════════════════════════ */
+.moneyLayer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bill {
+  position: absolute;
+  opacity: 0.28;
+  animation: billDrift linear infinite;
+}
+
+/* Each bill's style + animationDelay/Duration come from inline style */
+@keyframes billDrift {
+  0%,  100% { transform: var(--rot, rotate(-8deg)) translateY(0px); }
+  50%        { transform: var(--rot, rotate(-8deg)) translateY(-14px); }
+}
+
+/* Override the drift to use the inline transform as base */
+.bill:nth-child(1)  { --rot: rotate(-22deg); }
+.bill:nth-child(2)  { --rot: rotate(14deg);  }
+.bill:nth-child(3)  { --rot: rotate(-8deg);  }
+.bill:nth-child(4)  { --rot: rotate(26deg);  }
+.bill:nth-child(5)  { --rot: rotate(-16deg); }
+.bill:nth-child(6)  { --rot: rotate(10deg);  }
+.bill:nth-child(7)  { --rot: rotate(-4deg);  }
+.bill:nth-child(8)  { --rot: rotate(7deg);   }
+
+/* ═══════════════════════════════════════════════════════════════════
+   FRONT FACE CONTENT
+   ═══════════════════════════════════════════════════════════════════ */
+
+.pill {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 7px 18px;
+  border-radius: 999px;
+  color: var(--red, #e62525);
+  border: 1px solid rgba(230, 37, 37, 0.45);
+  background: rgba(230, 37, 37, 0.08);
+  font-family: var(--font-inter-tight), system-ui, sans-serif;
+  position: relative;
+  z-index: 2;
+}
+
+.pillGold {
+  color: var(--gold, #d4af37);
+  border-color: rgba(212, 175, 55, 0.45);
+  background: rgba(212, 175, 55, 0.08);
+}
+
+.losingLine {
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  font-weight: 900;
+  color: #ff4444;
+  text-align: center;
+  letter-spacing: -0.025em;
+  text-shadow: 0 0 60px rgba(255, 10, 10, 0.5);
+  margin: 0;
+  font-family: var(--font-inter-tight), system-ui, sans-serif;
+  position: relative;
+  z-index: 2;
+}
+
+.bigNumberWrap {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.bigNumber {
+  font-size: clamp(3.8rem, 11vw, 9rem);
+  font-weight: 900;
+  color: #e62525;
+  line-height: 0.88;
+  letter-spacing: -0.06em;
+  font-family: var(--font-inter-tight), system-ui, sans-serif;
+  text-shadow:
+    0 0 90px rgba(255, 10, 10, 0.65),
+    0 0 36px rgba(255, 10, 10, 0.45),
+    0 0 12px rgba(255, 10, 10, 0.35);
+}
+
+.bigNumberSuffix {
+  font-size: 0.32em;
+  color: #ff4444;
+  margin-left: 0.05em;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  opacity: 0.9;
+}
+
+.sub {
+  color: rgba(244, 237, 224, 0.55);
+  text-align: center;
+  max-width: 460px;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  margin: 6px auto 0;
+  font-family: var(--font-inter-tight), system-ui, sans-serif;
+  font-weight: 500;
+}
+
+.subLine { display: block; }
+
+/* ═══════════════════════════════════════════════════════════════════
+   CENTER CONTENT WRAPPER
+   ═══════════════════════════════════════════════════════════════════ */
+.centerContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   FLOATING RISK CARDS
+   ═══════════════════════════════════════════════════════════════════ */
+.riskCard {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 68, 68, 0.22);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 3;
+  animation: riskFloat ease-in-out infinite;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  white-space: nowrap;
+  cursor: default;
+}
+.riskCard:hover {
+  transform: translateY(-3px) scale(1.06) !important;
+  border-color: rgba(255, 68, 68, 0.50);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 16px rgba(255, 40, 40, 0.18);
+}
+
+@keyframes riskFloat {
+  0%, 100% { transform: translateY(0px);  }
+  50%       { transform: translateY(-8px); }
+}
+
+.riskIcon {
+  font-size: 0.95rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.riskLabel {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: rgba(244, 237, 224, 0.80);
+  font-family: var(--font-inter-tight), system-ui, sans-serif;
+  text-transform: uppercase;
+}
+
+/* ── Scroll hint ── */
+.scrollHint {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0.35;
+  animation: hintBounce 2s ease-in-out infinite;
+}
+.scrollDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 68, 68, 0.8);
+}
+@keyframes hintBounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%       { transform: translateX(-50%) translateY(6px); }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   BACK FACE CONTENT (upside)
+   ═══════════════════════════════════════════════════════════════════ */
+
+.upsideInner {
+  width: 100%;
+  max-width: 1080px;
+  text-align: center;
+  font-family: var(--font-inter-tight), system-ui, sans-serif;
+}
+
+.upsideHead {
+  font-size: clamp(2rem, 4.8vw, 3.4rem);
+  font-weight: 900;
+  margin: 24px auto 18px;
+  color: var(--white, #f4ede0);
+  line-height: 1.05;
+  max-width: 22ch;
+  letter-spacing: -0.035em;
+  font-family: var(--font-inter-tight), system-ui, sans-serif;
+}
+
+.accent { color: var(--gold, #d4af37); }
+
+.upsideBody {
+  max-width: 520px;
+  margin: 0 auto 40px;
+  color: rgba(244, 237, 224, 0.6);
+  line-height: 1.7;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.upsideCards {
+  display: grid;
+  grid-template-columns: 1fr 52px 1.05fr;
+  gap: 18px;
+  align-items: stretch;
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.upsideCard {
+  background: rgba(244, 237, 224, 0.04);
+  border: 1px solid rgba(244, 237, 224, 0.10);
+  border-radius: 18px;
+  padding: 32px 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.upsideCardGold {
+  background:
+    radial-gradient(ellipse at top right, rgba(212, 175, 55, 0.22), transparent 60%),
+    rgba(244, 237, 224, 0.04);
+  border-color: rgba(212, 175, 55, 0.50);
+  box-shadow: inset 0 0 36px rgba(212, 175, 55, 0.10);
+}
+
+.upsideLabel {
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(244, 237, 224, 0.5);
+  margin-bottom: 14px;
+  font-weight: 700;
+}
+.upsideCardGold .upsideLabel { color: var(--gold, #d4af37); }
+
+.upsideValue {
+  font-size: clamp(2rem, 3.8vw, 3.2rem);
+  font-weight: 900;
+  line-height: 1;
+  color: var(--white, #f4ede0);
+  letter-spacing: -0.045em;
+  font-family: var(--font-inter-tight), system-ui, sans-serif;
+}
+.upsideCardGold .upsideValue {
+  color: var(--gold, #d4af37);
+  text-shadow: 0 0 36px rgba(212, 175, 55, 0.35);
+}
+
+.perMo { font-size: 0.5em; opacity: 0.75; font-weight: 700; }
+
+.upsideNote {
+  margin-top: 10px;
+  font-size: 0.8rem;
+  color: rgba(244, 237, 224, 0.55);
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.arrowCol {
+  color: var(--gold, #d4af37);
+  font-size: 2.2rem;
+  align-self: center;
+  text-align: center;
+  font-weight: 900;
+  font-family: var(--font-inter-tight), system-ui, sans-serif;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   MOBILE
+   ═══════════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .pinStage  { height: 180vh; }
+  .flipFace  { padding: 40px 18px 72px; gap: 16px; }
+
+  /* Bills — pull back on mobile */
+  .bill { opacity: 0.14; }
+  .bill:nth-child(2), .bill:nth-child(5), .bill:nth-child(8) { display: none; }
+
+  /* Risk cards — hide all on mobile, center content speaks for itself */
+  .riskCard { display: none; }
+
+  /* Cost face */
+  .losingLine { font-size: clamp(1.2rem, 5.5vw, 1.8rem); }
+  .bigNumber  { font-size: clamp(2.6rem, 13vw, 4rem); }
+  .bigNumberSuffix { display: block; margin-left: 0; margin-top: 2px; font-size: 0.45em; }
+  .sub        { font-size: 0.82rem; }
+  .scrollHint { bottom: 14px; }
+
+  /* Upside face */
+  .upsideCards { grid-template-columns: 1fr; gap: 10px; max-width: 100%; }
+  .arrowCol    { display: none; }
+  .upsideCard  { padding: 20px 16px; }
+  .upsideHead  { font-size: clamp(1.6rem, 5.5vw, 2.2rem); margin: 14px auto 10px; }
+  .upsideBody  { font-size: 0.85rem; margin-bottom: 18px; }
+  .upsideValue { font-size: clamp(1.7rem, 8vw, 2.4rem); }
+}

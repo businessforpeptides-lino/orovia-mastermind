@@ -1,0 +1,387 @@
+/* ============================================================================
+   ONBOARDING PAGE
+============================================================================ */
+
+.root {
+  min-height: 100vh;
+  background: #0a0a0a;
+  color: #f4ede0;
+  font-family: var(--font-inter-tight), system-ui, sans-serif;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Entrance fade — class toggled after mount */
+.root > * {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.mounted > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mounted > *:nth-child(2) { transition-delay: 0.05s; }
+.mounted > *:nth-child(3) { transition-delay: 0.15s; }
+.mounted > *:nth-child(4) { transition-delay: 0.25s; }
+.mounted > *:nth-child(5) { transition-delay: 0.35s; }
+
+/* ── HERO ───────────────────────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 100px 24px 64px;
+  gap: 18px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: #d4af37;
+  border: 1px solid rgba(212, 175, 55, 0.30);
+  background: rgba(212, 175, 55, 0.07);
+  padding: 7px 18px;
+  border-radius: 999px;
+}
+
+.badgeDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #d4af37;
+  animation: badgePulse 2s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+.h1 {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.h1White {
+  font-size: clamp(2rem, 5vw, 3.8rem);
+  font-weight: 900;
+  color: #f4ede0;
+  letter-spacing: -0.04em;
+  line-height: 1.0;
+}
+
+.h1Gold {
+  font-size: clamp(2.2rem, 5.5vw, 4.2rem);
+  font-weight: 900;
+  color: #d4af37;
+  letter-spacing: -0.04em;
+  line-height: 1.0;
+  text-shadow: 0 0 60px rgba(212, 175, 55, 0.35);
+}
+
+.heroSub {
+  font-size: clamp(1rem, 2.2vw, 1.3rem);
+  font-weight: 600;
+  color: rgba(244, 237, 224, 0.75);
+  margin: 0;
+  max-width: 480px;
+}
+
+.heroBody {
+  font-size: 0.9rem;
+  color: rgba(244, 237, 224, 0.50);
+  line-height: 1.7;
+  margin: 0;
+  max-width: 440px;
+}
+
+/* ── STEP LABEL ─────────────────────────────────────────────────────────── */
+.videoLabel,
+.formLabel {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(244, 237, 224, 0.50);
+  margin-bottom: 28px;
+}
+
+.videoLabel::after,
+.formLabel::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(244, 237, 224, 0.08);
+}
+
+.videoStep {
+  color: #d4af37;
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+}
+
+/* ── VIDEO SECTION ──────────────────────────────────────────────────────── */
+.videoSection {
+  position: relative;
+  z-index: 10;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+}
+
+.videoWrap {
+  position: relative;
+}
+
+/* Gold corner ticks */
+.videoWrap::before,
+.videoWrap::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-color: rgba(212, 175, 55, 0.45);
+  border-style: solid;
+  z-index: 1;
+}
+
+.videoWrap::before {
+  top: -6px;
+  left: -6px;
+  border-width: 2px 0 0 2px;
+}
+
+.videoWrap::after {
+  bottom: -6px;
+  right: -6px;
+  border-width: 0 2px 2px 0;
+}
+
+.videoEmbed {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
+  aspect-ratio: 16 / 9;
+}
+
+.videoPlaceholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.videoPlayBtn {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(212, 175, 55, 0.12);
+  border: 1.5px solid rgba(212, 175, 55, 0.40);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.videoPlaceholderText {
+  font-size: 0.8rem;
+  color: rgba(244, 237, 224, 0.30);
+  margin: 0;
+  letter-spacing: 0.04em;
+}
+
+/* ── FORM SECTION ───────────────────────────────────────────────────────── */
+.formSection {
+  position: relative;
+  z-index: 10;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+}
+
+.formIntro {
+  font-size: 0.92rem;
+  color: rgba(244, 237, 224, 0.55);
+  line-height: 1.7;
+  margin: 0 0 32px;
+  max-width: 540px;
+  text-align: center;
+}
+
+.formWrap {
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.02);
+  overflow: hidden;
+  min-height: 480px;
+}
+
+.formPlaceholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 480px;
+  text-align: center;
+  padding: 40px;
+}
+
+.formPlaceholderIcon {
+  font-size: 2rem;
+  opacity: 0.4;
+}
+
+.formPlaceholderTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: rgba(244, 237, 224, 0.50);
+  margin: 0;
+}
+
+.formPlaceholderSub {
+  font-size: 0.8rem;
+  color: rgba(244, 237, 224, 0.30);
+  margin: 0;
+}
+
+.formDevBtn {
+  margin-top: 16px;
+  padding: 8px 18px;
+  border-radius: 8px;
+  border: 1px solid rgba(212, 175, 55, 0.30);
+  background: rgba(212, 175, 55, 0.08);
+  color: rgba(212, 175, 55, 0.70);
+  font-size: 0.75rem;
+  cursor: pointer;
+  font-family: inherit;
+  transition: opacity 0.2s;
+}
+
+.formDevBtn:hover { opacity: 0.7; }
+
+/* ── SUCCESS STATE ──────────────────────────────────────────────────────── */
+.successCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 56px 24px;
+  border-radius: 18px;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  background:
+    radial-gradient(ellipse at top, rgba(212, 175, 55, 0.10), transparent 60%),
+    rgba(255, 255, 255, 0.02);
+  text-align: center;
+}
+
+.successIcon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(212, 175, 55, 0.12);
+  border: 1.5px solid rgba(212, 175, 55, 0.40);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  color: #d4af37;
+}
+
+.successTitle {
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: #f4ede0;
+  margin: 0;
+  letter-spacing: -0.03em;
+}
+
+.successSub {
+  font-size: 0.88rem;
+  color: rgba(244, 237, 224, 0.55);
+  line-height: 1.7;
+  margin: 0;
+  max-width: 380px;
+}
+
+/* ── WHAT'S NEXT ────────────────────────────────────────────────────────── */
+.nextSection {
+  position: relative;
+  z-index: 10;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px 120px;
+}
+
+.nextTitle {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 900;
+  color: #f4ede0;
+  letter-spacing: -0.03em;
+  margin: 0 0 32px;
+}
+
+.nextGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.nextCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 24px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.nextNum {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: #d4af37;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.nextLabel {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #f4ede0;
+  margin-bottom: 4px;
+}
+
+.nextBody {
+  font-size: 0.82rem;
+  color: rgba(244, 237, 224, 0.50);
+  line-height: 1.65;
+}
+
+/* ── RESPONSIVE ─────────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .hero { padding: 80px 20px 48px; }
+  .videoSection,
+  .formSection,
+  .nextSection { padding-left: 20px; padding-right: 20px; }
+}

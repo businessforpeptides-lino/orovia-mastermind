@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "orovia-vsl",
+      "runtimeExecutable": "C:/Program Files/nodejs/node.exe",
+      "runtimeArgs": [
+        "C:/Users/James/Claude/orovia-vsl-next/node_modules/next/dist/bin/next",
+        "dev",
+        "--turbopack"
+      ],
+      "cwd": "C:/Users/James/Claude/orovia-vsl-next",
+      "port": 3000,
+      "autoPort": false
+    }
+  ]
+}

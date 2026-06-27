@@ -1,0 +1,180 @@
+/* ============================================================================
+   PAGE BACKGROUND — shared atmospheric background system
+   Used on all pages: VSL main, /booking, /confirmed
+============================================================================ */
+
+/* ── Dotted grid — slow drift ──────────────────────────────────────────────── */
+.bgDots {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1.2px);
+  background-size: 28px 28px;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse 100% 80% at 50% 30%, black 30%, transparent 90%);
+  -webkit-mask-image: radial-gradient(ellipse 100% 80% at 50% 30%, black 30%, transparent 90%);
+  animation: dotDrift 90s linear infinite;
+}
+
+@keyframes dotDrift {
+  from { background-position: 0 0; }
+  to   { background-position: 560px 560px; }
+}
+
+/* ── Layered atmospheric glow — red/gold, pulses + follows cursor ─────────── */
+.bgGlow {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 50% 40% at 25% 60%, rgba(212, 175, 55, 0.10), transparent 65%),
+    radial-gradient(ellipse 60% 50% at 80% 20%, rgba(212, 175, 55, 0.07), transparent 65%),
+    radial-gradient(ellipse 40% 60% at 60% 90%, rgba(212, 175, 55, 0.04), transparent 70%);
+  animation: glowPulse 11s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50%      { opacity: 1;    transform: scale(1.05); }
+}
+
+/* ── Film grain overlay ────────────────────────────────────────────────────── */
+.bgGrain {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ── Corner vignette ───────────────────────────────────────────────────────── */
+.bgVignette {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(ellipse 90% 70% at 50% 50%, transparent 40%, rgba(0, 0, 0, 0.55) 100%);
+}
+
+/* ── Floating vials — both sides, gold-tinted, burst + drift ──────────────── */
+.vials {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.vial1,
+.vial2,
+.vial3,
+.vial4 {
+  position: absolute;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+/* Right side — large anchor vial */
+.vial1 {
+  top: 20px;
+  right: 60px;
+  width: 200px;
+  height: 260px;
+  animation:
+    vialBurst1 1.2s cubic-bezier(0.34, 1.4, 0.5, 1) 0.55s forwards,
+    vialDrift1 14s ease-in-out 1.8s infinite;
+}
+
+/* Left side — mid vial */
+.vial2 {
+  top: 120px;
+  left: 50px;
+  width: 130px;
+  height: 170px;
+  animation:
+    vialBurst2 1.2s cubic-bezier(0.34, 1.4, 0.5, 1) 0.7s forwards,
+    vialDrift2 16s ease-in-out 1.95s infinite;
+}
+
+/* Right side — small lower vial */
+.vial3 {
+  top: 340px;
+  right: 30px;
+  width: 90px;
+  height: 115px;
+  animation:
+    vialBurst3 1.2s cubic-bezier(0.34, 1.4, 0.5, 1) 0.85s forwards,
+    vialDrift3 13s ease-in-out 2.1s infinite;
+}
+
+/* Left side — small upper vial */
+.vial4 {
+  top: 30px;
+  left: 20px;
+  width: 80px;
+  height: 105px;
+  animation:
+    vialBurst4 1.2s cubic-bezier(0.34, 1.4, 0.5, 1) 1.0s forwards,
+    vialDrift4 17s ease-in-out 2.3s infinite;
+}
+
+@keyframes vialBurst1 {
+  0%   { transform: translate(60px, 50px) scale(0.1) rotate(45deg); opacity: 0; }
+  25%  { opacity: 0.55; }
+  100% { transform: translate(0, 0) scale(1) rotate(-6deg); opacity: 0.55; }
+}
+
+@keyframes vialBurst2 {
+  0%   { transform: translate(-80px, -20px) scale(0.1) rotate(-30deg); opacity: 0; }
+  25%  { opacity: 0.42; }
+  100% { transform: translate(0, 0) scale(1) rotate(8deg); opacity: 0.42; }
+}
+
+@keyframes vialBurst3 {
+  0%   { transform: translate(80px, -60px) scale(0.1) rotate(60deg); opacity: 0; }
+  25%  { opacity: 0.38; }
+  100% { transform: translate(0, 0) scale(1) rotate(-3deg); opacity: 0.38; }
+}
+
+@keyframes vialBurst4 {
+  0%   { transform: translate(-60px, 40px) scale(0.1) rotate(-50deg); opacity: 0; }
+  25%  { opacity: 0.35; }
+  100% { transform: translate(0, 0) scale(1) rotate(5deg); opacity: 0.35; }
+}
+
+@keyframes vialDrift1 {
+  0%, 100% { transform: translate(0, 0) scale(1) rotate(-6deg); }
+  50%      { transform: translate(-10px, -20px) scale(1) rotate(-3deg); }
+}
+
+@keyframes vialDrift2 {
+  0%, 100% { transform: translate(0, 0) scale(1) rotate(8deg); }
+  50%      { transform: translate(12px, -14px) scale(1) rotate(5deg); }
+}
+
+@keyframes vialDrift3 {
+  0%, 100% { transform: translate(0, 0) scale(1) rotate(-3deg); }
+  50%      { transform: translate(-8px, -18px) scale(1) rotate(-1deg); }
+}
+
+@keyframes vialDrift4 {
+  0%, 100% { transform: translate(0, 0) scale(1) rotate(5deg); }
+  50%      { transform: translate(10px, -16px) scale(1) rotate(3deg); }
+}
+
+/* ── Responsive ────────────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .vial1 { width: 150px; height: 200px; right: 30px; }
+  .vial2 { width: 100px; height: 130px; left: 20px; }
+  .vial3 { width: 70px;  height: 90px;  right: 20px; }
+  .vial4 { width: 65px;  height: 85px;  left: 10px; }
+}
+
+@media (max-width: 640px) {
+  .vials { opacity: 0.45; }
+  .vial2, .vial4 { display: none; }
+}

@@ -1,0 +1,150 @@
+.bgDots {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1.2px);
+  background-size: 28px 28px;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse 100% 80% at 50% 30%, black 30%, transparent 90%);
+  -webkit-mask-image: radial-gradient(ellipse 100% 80% at 50% 30%, black 30%, transparent 90%);
+  animation: dotDrift 90s linear infinite;
+}
+
+@keyframes dotDrift {
+  from { background-position: 0 0; }
+  to   { background-position: 560px 560px; }
+}
+
+.bgGlow {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 50% 40% at 25% 60%, rgba(212, 175, 55, 0.10), transparent 65%),
+    radial-gradient(ellipse 60% 50% at 80% 20%, rgba(212, 175, 55, 0.07), transparent 65%),
+    radial-gradient(ellipse 40% 60% at 60% 90%, rgba(212, 175, 55, 0.04), transparent 70%);
+  animation: glowPulse 11s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50%       { opacity: 1;    transform: scale(1.05); }
+}
+
+.bgGrain {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.bgVignette {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(ellipse 90% 70% at 50% 50%, transparent 40%, rgba(0, 0, 0, 0.55) 100%);
+}
+
+/* Top-right vial cluster */
+.vials {
+  position: fixed;
+  top: -40px;
+  right: -40px;
+  width: 640px;
+  height: 580px;
+  z-index: 2;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.vial1,
+.vial2,
+.vial3 {
+  position: absolute;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+/* Large anchor vial */
+.vial1 {
+  top: 60px;
+  right: 80px;
+  width: 220px;
+  height: 290px;
+  animation:
+    vialBurst1 1.2s cubic-bezier(0.34, 1.4, 0.5, 1) 0.5s forwards,
+    vialDrift1 14s ease-in-out 1.8s infinite;
+}
+
+/* Mid vial */
+.vial2 {
+  top: 20px;
+  right: 260px;
+  width: 160px;
+  height: 210px;
+  animation:
+    vialBurst2 1.2s cubic-bezier(0.34, 1.4, 0.5, 1) 0.65s forwards,
+    vialDrift2 16s ease-in-out 1.95s infinite;
+}
+
+/* Small lower vial */
+.vial3 {
+  top: 230px;
+  right: 50px;
+  width: 110px;
+  height: 145px;
+  animation:
+    vialBurst3 1.2s cubic-bezier(0.34, 1.4, 0.5, 1) 0.8s forwards,
+    vialDrift3 13s ease-in-out 2.1s infinite;
+}
+
+@keyframes vialBurst1 {
+  0%   { transform: translate(60px, -80px) scale(0.1) rotate(30deg);  opacity: 0;    }
+  25%  { opacity: 0.55; }
+  100% { transform: translate(0, 0) scale(1) rotate(-8deg);           opacity: 0.55; }
+}
+
+@keyframes vialBurst2 {
+  0%   { transform: translate(40px, -60px) scale(0.1) rotate(-20deg); opacity: 0;    }
+  25%  { opacity: 0.42; }
+  100% { transform: translate(0, 0) scale(1) rotate(5deg);            opacity: 0.42; }
+}
+
+@keyframes vialBurst3 {
+  0%   { transform: translate(80px, -40px) scale(0.1) rotate(50deg);  opacity: 0;    }
+  25%  { opacity: 0.38; }
+  100% { transform: translate(0, 0) scale(1) rotate(-4deg);           opacity: 0.38; }
+}
+
+@keyframes vialDrift1 {
+  0%, 100% { transform: translate(0, 0)      scale(1) rotate(-8deg); }
+  50%       { transform: translate(-8px, -18px) scale(1) rotate(-5deg); }
+}
+
+@keyframes vialDrift2 {
+  0%, 100% { transform: translate(0, 0)       scale(1) rotate(5deg); }
+  50%       { transform: translate(10px, -12px) scale(1) rotate(3deg); }
+}
+
+@keyframes vialDrift3 {
+  0%, 100% { transform: translate(0, 0)      scale(1) rotate(-4deg); }
+  50%       { transform: translate(-6px, -16px) scale(1) rotate(-2deg); }
+}
+
+@media (max-width: 900px) {
+  .vials { width: 420px; height: 380px; }
+  .vial1  { width: 170px; height: 224px; right: 50px; }
+  .vial2  { width: 120px; height: 158px; right: 190px; }
+  .vial3  { width: 85px;  height: 112px; right: 30px; }
+}
+
+@media (max-width: 640px) {
+  .vials { opacity: 0.45; width: 300px; height: 280px; right: -20px; }
+  .vial2  { display: none; }
+}

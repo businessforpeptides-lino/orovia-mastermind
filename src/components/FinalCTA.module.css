@@ -1,0 +1,390 @@
+/* ============ SECTION ============ */
+.twoFutures {
+  min-height: 100vh;
+  background: var(--charcoal);
+  position: relative;
+  padding: 140px 24px 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  font-family: var(--font-inter-tight), system-ui, sans-serif;
+  color: var(--white);
+}
+
+/* Atmospheric gold halos at opposite corners */
+.twoFutures::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 30% 10%, rgba(212, 175, 55, 0.06), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 90%, rgba(212, 175, 55, 0.04), transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Faint diagonal silk lines */
+.twoFutures::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    115deg,
+    transparent 0px,
+    rgba(244, 237, 224, 0.012) 2px,
+    transparent 4px,
+    transparent 80px
+  );
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.7;
+}
+
+.twoFutures > * { position: relative; z-index: 1; }
+
+/* ============ HEADING ============ */
+.headingStack {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.hLine {
+  display: block;
+  font-size: clamp(2.4rem, 6vw, 4.4rem);
+  font-weight: 900;
+  line-height: 1.0;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: var(--white);
+  font-family: var(--font-inter-tight), system-ui, sans-serif;
+}
+
+/* The first headline line is intentionally faded so the gold second line is
+   the clear focal point. Targeting the explicit class instead of :nth-child
+   so it doesn't fight specificity with .hLineGold below. */
+.hLineFaded {
+  color: rgba(244, 237, 224, 0.35);
+}
+
+.hLineGold {
+  color: var(--gold);
+  text-shadow: 0 0 60px rgba(212, 175, 55, 0.35);
+}
+
+.headingSub {
+  margin-top: 28px;
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  color: rgba(244, 237, 224, 0.6);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+/* ============ BRACKET ============ */
+.bracket {
+  width: min(900px, 90%);
+  height: 90px;
+  margin-bottom: 0;
+  position: relative;
+}
+
+.bracket svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.bracketPath {
+  stroke: rgba(244, 237, 224, 0.28);
+  stroke-width: 1;
+  fill: none;
+  stroke-dasharray: 5 5;
+}
+
+/* ============ CARDS GRID ============ */
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 80px 1fr;
+  gap: 28px;
+  align-items: stretch;
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.card {
+  background: linear-gradient(180deg, #181818 0%, var(--charcoal-3) 100%);
+  border: 1px solid rgba(244, 237, 224, 0.08);
+  border-radius: 28px;
+  padding: 48px 38px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.55);
+  position: relative;
+  overflow: hidden;
+}
+
+.cardWith {
+  background:
+    radial-gradient(ellipse at top right, rgba(212, 175, 55, 0.22), transparent 60%),
+    radial-gradient(ellipse at bottom left, rgba(212, 175, 55, 0.06), transparent 50%),
+    linear-gradient(180deg, #181818 0%, var(--charcoal-3) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.5);
+}
+
+.cardWith::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 28px;
+  border: 1px solid rgba(212, 175, 55, 0.65);
+  pointer-events: none;
+  box-shadow: inset 0 0 60px rgba(212, 175, 55, 0.1);
+}
+
+.cardEyebrow {
+  text-align: center;
+  font-size: 0.78rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(244, 237, 224, 0.6);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.cardWith .cardEyebrow {
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.subEyebrow {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: rgba(244, 237, 224, 0.4);
+  font-weight: 500;
+}
+
+.cardWith .subEyebrow {
+  color: #b89829;
+}
+
+.cardHeadline {
+  text-align: center;
+  font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+  color: var(--white);
+  margin: 24px 0 36px;
+  font-family: var(--font-inter-tight), system-ui, sans-serif;
+}
+
+/* ============ BULLETS ============ */
+.bullets {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+}
+
+.bullet {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 18px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--white);
+}
+
+.bulletIcon {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+}
+
+/* Negative card icon — small open circle with a faint dash */
+.card:not(.cardWith) .bulletIcon {
+  border: 1.5px solid rgba(244, 237, 224, 0.3);
+}
+
+.card:not(.cardWith) .bulletIcon::after {
+  content: '';
+  width: 10px;
+  height: 1.5px;
+  background: rgba(244, 237, 224, 0.3);
+}
+
+/* Positive card icon — gold ring with a checkmark */
+.cardWith .bulletIcon {
+  border: 1.5px solid var(--gold);
+}
+
+.cardWith .bulletIcon::after {
+  content: '';
+  width: 8px;
+  height: 4px;
+  border-left: 1.5px solid var(--gold);
+  border-bottom: 1.5px solid var(--gold);
+  transform: rotate(-45deg) translate(1px, -1px);
+}
+
+.cardWith .bullet {
+  color: var(--white);
+  font-weight: 600;
+}
+
+.bullet em {
+  font-style: normal;
+  color: rgba(244, 237, 224, 0.6);
+  font-weight: 400;
+}
+
+.cardWith .bullet em {
+  color: #b89829;
+  font-weight: 500;
+}
+
+/* ============ FOOTERS ============ */
+.cardFooter {
+  margin-top: 32px;
+  padding: 18px 22px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  text-align: center;
+}
+
+/* Left card footer — red prohibition badge */
+.card:not(.cardWith) .cardFooter {
+  border: 1px solid rgba(255, 40, 40, 0.45);
+  background: rgba(255, 40, 40, 0.06);
+  color: var(--white);
+  font-weight: 700;
+  font-size: 0.88rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.banIcon {
+  width: 22px;
+  height: 22px;
+  border: 2px solid #ff2828;
+  border-radius: 50%;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.banIcon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 2px;
+  right: 2px;
+  height: 2px;
+  background: #ff2828;
+  transform: translateY(-50%) rotate(-45deg);
+  transform-origin: center;
+}
+
+/* Right card footer — gold CTA button */
+.cardWith .cardFooter {
+  background: linear-gradient(180deg, var(--white) 0%, #e8e0cf 100%);
+  color: var(--charcoal);
+  flex-direction: column;
+  gap: 4px;
+  padding: 22px 22px;
+  text-decoration: none;
+  box-shadow:
+    0 12px 30px rgba(212, 175, 55, 0.2),
+    0 0 0 1px rgba(212, 175, 55, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cardWith .cardFooter:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 18px 40px rgba(212, 175, 55, 0.3),
+    0 0 0 1px rgba(212, 175, 55, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.ctaMain {
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--charcoal);
+}
+
+.ctaSub {
+  font-size: 0.82rem;
+  color: rgba(20, 20, 20, 0.6);
+  font-style: italic;
+  font-weight: 500;
+}
+
+/* ============ VS BADGE ============ */
+.vsBadge {
+  align-self: center;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(244, 237, 224, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: var(--white);
+  background: var(--charcoal-2);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+.vsBadge::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  pointer-events: none;
+}
+
+@media (max-width: 900px) {
+  .twoFutures {
+    padding: 100px 20px 120px;
+  }
+  .cards {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .vsBadge {
+    justify-self: center;
+    width: 56px;
+    height: 56px;
+  }
+  .bracket {
+    display: none;
+  }
+  .card {
+    padding: 36px 26px;
+  }
+  .cardHeadline {
+    margin: 20px 0 28px;
+  }
+}

@@ -1,0 +1,52 @@
+/* ── Vial wrapper — base class shared by all 4 vials ── */
+.vialWrap {
+  position: absolute;
+  transform-origin: bottom center;
+}
+
+/* ── Near (foreground) vials — sharp, no blur ── */
+.vialNear {
+  filter: drop-shadow(0 40px 55px rgba(0, 0, 0, 0.75));
+}
+
+/* ── Far (background) vials — blurred, dimmed ── */
+.vialFar {
+  filter: blur(3px);
+  opacity: 0.6;
+}
+
+/* ── Individual vial positions + default widths ── */
+
+/* Vial 1 — left foreground (near) */
+.vial1 { width: 200px; left: 0%;  bottom: 6%;  }
+/* Vial 2 — left background (far) */
+.vial2 { width: 115px; left: 6%;  bottom: 10%; }
+/* Vial 3 — right foreground (near) */
+.vial3 { width: 205px; right: 0%; bottom: 6%;  }
+/* Vial 4 — right background (far) */
+.vial4 { width: 120px; right: 6%; bottom: 10%; }
+
+/* ── Responsive breakpoints ── */
+
+@media (max-width: 1100px) {
+  .vial1 { width: 160px; }
+  .vial2 { width: 95px;  }
+  .vial3 { width: 165px; }
+  .vial4 { width: 100px; }
+}
+
+@media (max-width: 900px) {
+  .vial1 { width: 130px; left: -1%;  }
+  .vial2 { width: 78px;  left: 5%;   }
+  .vial3 { width: 134px; right: -1%; }
+  .vial4 { width: 82px;  right: 5%;  }
+}
+
+@media (max-width: 600px) {
+  /* Drop the blurred background vials on small screens */
+  .vial2 { display: none; }
+  .vial4 { display: none; }
+  /* Near vials smaller + slightly dimmer so they frame not clutter */
+  .vial1 { width: 105px; left: -2%;  opacity: 0.82; }
+  .vial3 { width: 108px; right: -2%; opacity: 0.82; }
+}

@@ -1,0 +1,1241 @@
+
+> orovia-vsl@0.1.0 dev
+> next dev
+
+▲ Next.js 16.2.4 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://172.16.0.2:3000
+✓ Ready in 1261ms
+⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of C:\Users\HP\Desktop\orovia mastermind\package-lock.json as the root directory.
+ To silence this warning, set `turbopack.root` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory for more information.
+ Detected additional lockfiles: 
+   * C:\Users\HP\Desktop\orovia mastermind\src\package-lock.json
+
+
+ GET / 200 in 1280ms (next.js: 646ms, application-code: 634ms)
+ GET /confirmed 200 in 3.0s (next.js: 2.9s, application-code: 158ms)
+ GET /confirmed 200 in 96ms (next.js: 7ms, application-code: 89ms)
+ GET /confirmed 200 in 149ms (next.js: 9ms, application-code: 140ms)
+ GET /confirmed 200 in 147ms (next.js: 13ms, application-code: 135ms)
+ GET /confirmed 200 in 105ms (next.js: 8ms, application-code: 97ms)
+ GET / 200 in 134ms (next.js: 13ms, application-code: 120ms)
+ GET /confirmed 200 in 1350ms (next.js: 32ms, application-code: 1318ms)
+✓ Compiled in 208ms
+ GET /confirmed 200 in 401ms (next.js: 207ms, application-code: 194ms)
+⚠ Fast Refresh had to perform a full reload due to a runtime error.
+✓ Compiled in 110ms
+⨯ ReferenceError: n is not defined
+    at ConfirmedPage (components\ConfirmedPage.tsx:60:1)
+  58 |   const [buildsIndex, setBuildsIndex] = useState(0);
+  59 |   const buildsTouchX = useRef(0);
+> 60 | n  // Video refs and state
+     | ^
+  61 |   const videoRef = useRef<HTMLVideoElement>(null);
+  62 |   const [poster, setPoster] = useState<string | null>(null);
+  63 |   const [videoError, setVideoError] = useState<string | null>(null); {
+  digest: '2301980099'
+}
+ GET /confirmed 500 in 571ms (next.js: 164ms, application-code: 407ms)
+✓ Compiled in 290ms
+⨯ ./src/components/ConfirmedPage.tsx:185:9
+the name `captureFrameAsPoster` is defined multiple times
+  [90m183 |[0m   };
+  [90m184 |[0m
+[31m[1m>[0m [90m185 |[0m   [36mconst[0m captureFrameAsPoster = (video: [33mHTMLVideoElement[0m) => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^^^^^^[0m
+  [90m186 |[0m     [36mtry[0m {
+  [90m187 |[0m       [90m// Create a temporary canvas to capture the frame[0m
+  [90m188 |[0m       [36mconst[0m canvas = document.createElement([32m"canvas"[0m);
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:265:9
+the name `captureFrameAsPoster` is defined multiple times
+  [90m263 |[0m   };
+  [90m264 |[0m
+[31m[1m>[0m [90m265 |[0m   [36mconst[0m captureFrameAsPoster = (video: [33mHTMLVideoElement[0m) => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^^^^^^[0m
+  [90m266 |[0m     [36mtry[0m {
+  [90m267 |[0m       [90m// Create a temporary canvas to capture the frame[0m
+  [90m268 |[0m       [36mconst[0m canvas = document.createElement([32m"canvas"[0m);
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:345:9
+the name `captureFrameAsPoster` is defined multiple times
+  [90m343 |[0m   };
+  [90m344 |[0m
+[31m[1m>[0m [90m345 |[0m   [36mconst[0m captureFrameAsPoster = (video: [33mHTMLVideoElement[0m) => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^^^^^^[0m
+  [90m346 |[0m     [36mtry[0m {
+  [90m347 |[0m       [90m// Create a temporary canvas to capture the frame[0m
+  [90m348 |[0m       [36mconst[0m canvas = document.createElement([32m"canvas"[0m);
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:425:9
+the name `captureFrameAsPoster` is defined multiple times
+  [90m423 |[0m   };
+  [90m424 |[0m
+[31m[1m>[0m [90m425 |[0m   [36mconst[0m captureFrameAsPoster = (video: [33mHTMLVideoElement[0m) => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^^^^^^[0m
+  [90m426 |[0m     [36mtry[0m {
+  [90m427 |[0m       [90m// Create a temporary canvas to capture the frame[0m
+  [90m428 |[0m       [36mconst[0m canvas = document.createElement([32m"canvas"[0m);
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:505:9
+the name `captureFrameAsPoster` is defined multiple times
+  [90m503 |[0m   };
+  [90m504 |[0m
+[31m[1m>[0m [90m505 |[0m   [36mconst[0m captureFrameAsPoster = (video: [33mHTMLVideoElement[0m) => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^^^^^^[0m
+  [90m506 |[0m     [36mtry[0m {
+  [90m507 |[0m       [90m// Create a temporary canvas to capture the frame[0m
+  [90m508 |[0m       [36mconst[0m canvas = document.createElement([32m"canvas"[0m);
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:210:9
+the name `generatePlaceholderPoster` is defined multiple times
+  [90m208 |[0m   };
+  [90m209 |[0m
+[31m[1m>[0m [90m210 |[0m   [36mconst[0m generatePlaceholderPoster = (): string => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m211 |[0m     [90m// Generate a simple SVG placeholder with the video dimensions or a default size[0m
+  [90m212 |[0m     [36mconst[0m width = [35m1280[0m;
+  [90m213 |[0m     [36mconst[0m height = [35m720[0m;
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:290:9
+the name `generatePlaceholderPoster` is defined multiple times
+  [90m288 |[0m   };
+  [90m289 |[0m
+[31m[1m>[0m [90m290 |[0m   [36mconst[0m generatePlaceholderPoster = (): string => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m291 |[0m     [90m// Generate a simple SVG placeholder with the video dimensions or a default size[0m
+  [90m292 |[0m     [36mconst[0m width = [35m1280[0m;
+  [90m293 |[0m     [36mconst[0m height = [35m720[0m;
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:370:9
+the name `generatePlaceholderPoster` is defined multiple times
+  [90m368 |[0m   };
+  [90m369 |[0m
+[31m[1m>[0m [90m370 |[0m   [36mconst[0m generatePlaceholderPoster = (): string => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m371 |[0m     [90m// Generate a simple SVG placeholder with the video dimensions or a default size[0m
+  [90m372 |[0m     [36mconst[0m width = [35m1280[0m;
+  [90m373 |[0m     [36mconst[0m height = [35m720[0m;
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:450:9
+the name `generatePlaceholderPoster` is defined multiple times
+  [90m448 |[0m   };
+  [90m449 |[0m
+[31m[1m>[0m [90m450 |[0m   [36mconst[0m generatePlaceholderPoster = (): string => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m451 |[0m     [90m// Generate a simple SVG placeholder with the video dimensions or a default size[0m
+  [90m452 |[0m     [36mconst[0m width = [35m1280[0m;
+  [90m453 |[0m     [36mconst[0m height = [35m720[0m;
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:530:9
+the name `generatePlaceholderPoster` is defined multiple times
+  [90m528 |[0m   };
+  [90m529 |[0m
+[31m[1m>[0m [90m530 |[0m   [36mconst[0m generatePlaceholderPoster = (): string => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m531 |[0m     [90m// Generate a simple SVG placeholder with the video dimensions or a default size[0m
+  [90m532 |[0m     [36mconst[0m width = [35m1280[0m;
+  [90m533 |[0m     [36mconst[0m height = [35m720[0m;
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:149:9
+the name `handleLoadStart` is defined multiple times
+  [90m147 |[0m n  
+  [90m148 |[0m   [90m// Video event handlers[0m
+[31m[1m>[0m [90m149 |[0m   [36mconst[0m handleLoadStart = () => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^[0m
+  [90m150 |[0m     setVideoError([36mnull[0m);
+  [90m151 |[0m     [90m// Reset poster when video starts loading[0m
+  [90m152 |[0m     setPoster([36mnull[0m);
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:229:9
+the name `handleLoadStart` is defined multiple times
+  [90m227 |[0m n  
+  [90m228 |[0m   [90m// Video event handlers[0m
+[31m[1m>[0m [90m229 |[0m   [36mconst[0m handleLoadStart = () => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^[0m
+  [90m230 |[0m     setVideoError([36mnull[0m);
+  [90m231 |[0m     [90m// Reset poster when video starts loading[0m
+  [90m232 |[0m     setPoster([36mnull[0m);
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:309:9
+the name `handleLoadStart` is defined multiple times
+  [90m307 |[0m n  
+  [90m308 |[0m   [90m// Video event handlers[0m
+[31m[1m>[0m [90m309 |[0m   [36mconst[0m handleLoadStart = () => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^[0m
+  [90m310 |[0m     setVideoError([36mnull[0m);
+  [90m311 |[0m     [90m// Reset poster when video starts loading[0m
+  [90m312 |[0m     setPoster([36mnull[0m);
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:389:9
+the name `handleLoadStart` is defined multiple times
+  [90m387 |[0m n  
+  [90m388 |[0m   [90m// Video event handlers[0m
+[31m[1m>[0m [90m389 |[0m   [36mconst[0m handleLoadStart = () => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^[0m
+  [90m390 |[0m     setVideoError([36mnull[0m);
+  [90m391 |[0m     [90m// Reset poster when video starts loading[0m
+  [90m392 |[0m     setPoster([36mnull[0m);
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:469:9
+the name `handleLoadStart` is defined multiple times
+  [90m467 |[0m n  
+  [90m468 |[0m   [90m// Video event handlers[0m
+[31m[1m>[0m [90m469 |[0m   [36mconst[0m handleLoadStart = () => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^[0m
+  [90m470 |[0m     setVideoError([36mnull[0m);
+  [90m471 |[0m     [90m// Reset poster when video starts loading[0m
+  [90m472 |[0m     setPoster([36mnull[0m);
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:155:9
+the name `handleLoadedMetadata` is defined multiple times
+  [90m153 |[0m   };
+  [90m154 |[0m
+[31m[1m>[0m [90m155 |[0m   [36mconst[0m handleLoadedMetadata = () => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^^^^^^[0m
+  [90m156 |[0m     [36mconst[0m video = videoRef.current;
+  [90m157 |[0m     [36mif[0m (!video) [36mreturn[0m;
+  [90m158 |[0m
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:235:9
+the name `handleLoadedMetadata` is defined multiple times
+  [90m233 |[0m   };
+  [90m234 |[0m
+[31m[1m>[0m [90m235 |[0m   [36mconst[0m handleLoadedMetadata = () => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^^^^^^[0m
+  [90m236 |[0m     [36mconst[0m video = videoRef.current;
+  [90m237 |[0m     [36mif[0m (!video) [36mreturn[0m;
+  [90m238 |[0m
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:315:9
+the name `handleLoadedMetadata` is defined multiple times
+  [90m313 |[0m   };
+  [90m314 |[0m
+[31m[1m>[0m [90m315 |[0m   [36mconst[0m handleLoadedMetadata = () => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^^^^^^[0m
+  [90m316 |[0m     [36mconst[0m video = videoRef.current;
+  [90m317 |[0m     [36mif[0m (!video) [36mreturn[0m;
+  [90m318 |[0m
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:395:9
+the name `handleLoadedMetadata` is defined multiple times
+  [90m393 |[0m   };
+  [90m394 |[0m
+[31m[1m>[0m [90m395 |[0m   [36mconst[0m handleLoadedMetadata = () => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^^^^^^[0m
+  [90m396 |[0m     [36mconst[0m video = videoRef.current;
+  [90m397 |[0m     [36mif[0m (!video) [36mreturn[0m;
+  [90m398 |[0m
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:475:9
+the name `handleLoadedMetadata` is defined multiple times
+  [90m473 |[0m   };
+  [90m474 |[0m
+[31m[1m>[0m [90m475 |[0m   [36mconst[0m handleLoadedMetadata = () => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^^^^^^[0m
+  [90m476 |[0m     [36mconst[0m video = videoRef.current;
+  [90m477 |[0m     [36mif[0m (!video) [36mreturn[0m;
+  [90m478 |[0m
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:163:9
+the name `handleVideoError` is defined multiple times
+  [90m161 |[0m   };
+  [90m162 |[0m
+[31m[1m>[0m [90m163 |[0m   [36mconst[0m handleVideoError = (e: [33mReact[0m.[33mSyntheticEvent[0m<[33mHTMLVideoElement[0m, [33mEvent[0m>) => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^^[0m
+  [90m164 |[0m     [36mconst[0m errorMsg = videoRef.current?.error?.message || [32m"Unknown video error"[0m;
+  [90m165 |[0m     setVideoError([32m`Failed to load video: [0m${errorMsg[32m}`[0m);
+  [90m166 |[0m     console.error([32m"Video error:"[0m, e);
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:243:9
+the name `handleVideoError` is defined multiple times
+  [90m241 |[0m   };
+  [90m242 |[0m
+[31m[1m>[0m [90m243 |[0m   [36mconst[0m handleVideoError = (e: [33mReact[0m.[33mSyntheticEvent[0m<[33mHTMLVideoElement[0m, [33mEvent[0m>) => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^^[0m
+  [90m244 |[0m     [36mconst[0m errorMsg = videoRef.current?.error?.message || [32m"Unknown video error"[0m;
+  [90m245 |[0m     setVideoError([32m`Failed to load video: [0m${errorMsg[32m}`[0m);
+  [90m246 |[0m     console.error([32m"Video error:"[0m, e);
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:323:9
+the name `handleVideoError` is defined multiple times
+  [90m321 |[0m   };
+  [90m322 |[0m
+[31m[1m>[0m [90m323 |[0m   [36mconst[0m handleVideoError = (e: [33mReact[0m.[33mSyntheticEvent[0m<[33mHTMLVideoElement[0m, [33mEvent[0m>) => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^^[0m
+  [90m324 |[0m     [36mconst[0m errorMsg = videoRef.current?.error?.message || [32m"Unknown video error"[0m;
+  [90m325 |[0m     setVideoError([32m`Failed to load video: [0m${errorMsg[32m}`[0m);
+  [90m326 |[0m     console.error([32m"Video error:"[0m, e);
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:403:9
+the name `handleVideoError` is defined multiple times
+  [90m401 |[0m   };
+  [90m402 |[0m
+[31m[1m>[0m [90m403 |[0m   [36mconst[0m handleVideoError = (e: [33mReact[0m.[33mSyntheticEvent[0m<[33mHTMLVideoElement[0m, [33mEvent[0m>) => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^^[0m
+  [90m404 |[0m     [36mconst[0m errorMsg = videoRef.current?.error?.message || [32m"Unknown video error"[0m;
+  [90m405 |[0m     setVideoError([32m`Failed to load video: [0m${errorMsg[32m}`[0m);
+  [90m406 |[0m     console.error([32m"Video error:"[0m, e);
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:483:9
+the name `handleVideoError` is defined multiple times
+  [90m481 |[0m   };
+  [90m482 |[0m
+[31m[1m>[0m [90m483 |[0m   [36mconst[0m handleVideoError = (e: [33mReact[0m.[33mSyntheticEvent[0m<[33mHTMLVideoElement[0m, [33mEvent[0m>) => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^^[0m
+  [90m484 |[0m     [36mconst[0m errorMsg = videoRef.current?.error?.message || [32m"Unknown video error"[0m;
+  [90m485 |[0m     setVideoError([32m`Failed to load video: [0m${errorMsg[32m}`[0m);
+  [90m486 |[0m     console.error([32m"Video error:"[0m, e);
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:169:9
+the name `tryToCaptureFirstFrame` is defined multiple times
+  [90m167 |[0m   };
+  [90m168 |[0m
+[31m[1m>[0m [90m169 |[0m   [36mconst[0m tryToCaptureFirstFrame = (video: [33mHTMLVideoElement[0m) => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m170 |[0m     [90m// Wait a bit for video to be ready[0m
+  [90m171 |[0m     [36mif[0m (video.readyState >= [35m2[0m) {
+  [90m172 |[0m       captureFrameAsPoster(video);
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:249:9
+the name `tryToCaptureFirstFrame` is defined multiple times
+  [90m247 |[0m   };
+  [90m248 |[0m
+[31m[1m>[0m [90m249 |[0m   [36mconst[0m tryToCaptureFirstFrame = (video: [33mHTMLVideoElement[0m) => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m250 |[0m     [90m// Wait a bit for video to be ready[0m
+  [90m251 |[0m     [36mif[0m (video.readyState >= [35m2[0m) {
+  [90m252 |[0m       captureFrameAsPoster(video);
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:329:9
+the name `tryToCaptureFirstFrame` is defined multiple times
+  [90m327 |[0m   };
+  [90m328 |[0m
+[31m[1m>[0m [90m329 |[0m   [36mconst[0m tryToCaptureFirstFrame = (video: [33mHTMLVideoElement[0m) => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m330 |[0m     [90m// Wait a bit for video to be ready[0m
+  [90m331 |[0m     [36mif[0m (video.readyState >= [35m2[0m) {
+  [90m332 |[0m       captureFrameAsPoster(video);
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:409:9
+the name `tryToCaptureFirstFrame` is defined multiple times
+  [90m407 |[0m   };
+  [90m408 |[0m
+[31m[1m>[0m [90m409 |[0m   [36mconst[0m tryToCaptureFirstFrame = (video: [33mHTMLVideoElement[0m) => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m410 |[0m     [90m// Wait a bit for video to be ready[0m
+  [90m411 |[0m     [36mif[0m (video.readyState >= [35m2[0m) {
+  [90m412 |[0m       captureFrameAsPoster(video);
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:489:9
+the name `tryToCaptureFirstFrame` is defined multiple times
+  [90m487 |[0m   };
+  [90m488 |[0m
+[31m[1m>[0m [90m489 |[0m   [36mconst[0m tryToCaptureFirstFrame = (video: [33mHTMLVideoElement[0m) => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m490 |[0m     [90m// Wait a bit for video to be ready[0m
+  [90m491 |[0m     [36mif[0m (video.readyState >= [35m2[0m) {
+  [90m492 |[0m       captureFrameAsPoster(video);
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+ GET /confirmed 500 in 839ms (next.js: 380ms, application-code: 459ms)
+[browser] Uncaught Error: ./src/components/ConfirmedPage.tsx:505:9
+the name `captureFrameAsPoster` is defined multiple times
+  503 |   };
+  504 |
+> 505 |   const captureFrameAsPoster = (video: HTMLVideoElement) => {
+      |         ^^^^^^^^^^^^^^^^^^^^
+  506 |     try {
+  507 |       // Create a temporary canvas to capture the frame
+  508 |       const canvas = document.createElement("canvas");
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+    at <unknown> (Error: ./src/components/ConfirmedPage.tsx:505:9)
+    at <unknown> (Error: (./src/components/ConfirmedPage.tsx:505:9)
+⨯ ./src/components/ConfirmedPage.tsx:185:9
+the name `captureFrameAsPoster` is defined multiple times
+  [90m183 |[0m   };
+  [90m184 |[0m
+[31m[1m>[0m [90m185 |[0m   [36mconst[0m captureFrameAsPoster = (video: [33mHTMLVideoElement[0m) => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^^^^^^[0m
+  [90m186 |[0m     [36mtry[0m {
+  [90m187 |[0m       [90m// Create a temporary canvas to capture the frame[0m
+  [90m188 |[0m       [36mconst[0m canvas = document.createElement([32m"canvas"[0m);
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:265:9
+the name `captureFrameAsPoster` is defined multiple times
+  [90m263 |[0m   };
+  [90m264 |[0m
+[31m[1m>[0m [90m265 |[0m   [36mconst[0m captureFrameAsPoster = (video: [33mHTMLVideoElement[0m) => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^^^^^^[0m
+  [90m266 |[0m     [36mtry[0m {
+  [90m267 |[0m       [90m// Create a temporary canvas to capture the frame[0m
+  [90m268 |[0m       [36mconst[0m canvas = document.createElement([32m"canvas"[0m);
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:345:9
+the name `captureFrameAsPoster` is defined multiple times
+  [90m343 |[0m   };
+  [90m344 |[0m
+[31m[1m>[0m [90m345 |[0m   [36mconst[0m captureFrameAsPoster = (video: [33mHTMLVideoElement[0m) => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^^^^^^[0m
+  [90m346 |[0m     [36mtry[0m {
+  [90m347 |[0m       [90m// Create a temporary canvas to capture the frame[0m
+  [90m348 |[0m       [36mconst[0m canvas = document.createElement([32m"canvas"[0m);
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:425:9
+the name `captureFrameAsPoster` is defined multiple times
+  [90m423 |[0m   };
+  [90m424 |[0m
+[31m[1m>[0m [90m425 |[0m   [36mconst[0m captureFrameAsPoster = (video: [33mHTMLVideoElement[0m) => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^^^^^^[0m
+  [90m426 |[0m     [36mtry[0m {
+  [90m427 |[0m       [90m// Create a temporary canvas to capture the frame[0m
+  [90m428 |[0m       [36mconst[0m canvas = document.createElement([32m"canvas"[0m);
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:505:9
+the name `captureFrameAsPoster` is defined multiple times
+  [90m503 |[0m   };
+  [90m504 |[0m
+[31m[1m>[0m [90m505 |[0m   [36mconst[0m captureFrameAsPoster = (video: [33mHTMLVideoElement[0m) => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^^^^^^[0m
+  [90m506 |[0m     [36mtry[0m {
+  [90m507 |[0m       [90m// Create a temporary canvas to capture the frame[0m
+  [90m508 |[0m       [36mconst[0m canvas = document.createElement([32m"canvas"[0m);
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:210:9
+the name `generatePlaceholderPoster` is defined multiple times
+  [90m208 |[0m   };
+  [90m209 |[0m
+[31m[1m>[0m [90m210 |[0m   [36mconst[0m generatePlaceholderPoster = (): string => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m211 |[0m     [90m// Generate a simple SVG placeholder with the video dimensions or a default size[0m
+  [90m212 |[0m     [36mconst[0m width = [35m1280[0m;
+  [90m213 |[0m     [36mconst[0m height = [35m720[0m;
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:290:9
+the name `generatePlaceholderPoster` is defined multiple times
+  [90m288 |[0m   };
+  [90m289 |[0m
+[31m[1m>[0m [90m290 |[0m   [36mconst[0m generatePlaceholderPoster = (): string => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m291 |[0m     [90m// Generate a simple SVG placeholder with the video dimensions or a default size[0m
+  [90m292 |[0m     [36mconst[0m width = [35m1280[0m;
+  [90m293 |[0m     [36mconst[0m height = [35m720[0m;
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:370:9
+the name `generatePlaceholderPoster` is defined multiple times
+  [90m368 |[0m   };
+  [90m369 |[0m
+[31m[1m>[0m [90m370 |[0m   [36mconst[0m generatePlaceholderPoster = (): string => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m371 |[0m     [90m// Generate a simple SVG placeholder with the video dimensions or a default size[0m
+  [90m372 |[0m     [36mconst[0m width = [35m1280[0m;
+  [90m373 |[0m     [36mconst[0m height = [35m720[0m;
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:450:9
+the name `generatePlaceholderPoster` is defined multiple times
+  [90m448 |[0m   };
+  [90m449 |[0m
+[31m[1m>[0m [90m450 |[0m   [36mconst[0m generatePlaceholderPoster = (): string => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m451 |[0m     [90m// Generate a simple SVG placeholder with the video dimensions or a default size[0m
+  [90m452 |[0m     [36mconst[0m width = [35m1280[0m;
+  [90m453 |[0m     [36mconst[0m height = [35m720[0m;
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:530:9
+the name `generatePlaceholderPoster` is defined multiple times
+  [90m528 |[0m   };
+  [90m529 |[0m
+[31m[1m>[0m [90m530 |[0m   [36mconst[0m generatePlaceholderPoster = (): string => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m531 |[0m     [90m// Generate a simple SVG placeholder with the video dimensions or a default size[0m
+  [90m532 |[0m     [36mconst[0m width = [35m1280[0m;
+  [90m533 |[0m     [36mconst[0m height = [35m720[0m;
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:149:9
+the name `handleLoadStart` is defined multiple times
+  [90m147 |[0m n  
+  [90m148 |[0m   [90m// Video event handlers[0m
+[31m[1m>[0m [90m149 |[0m   [36mconst[0m handleLoadStart = () => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^[0m
+  [90m150 |[0m     setVideoError([36mnull[0m);
+  [90m151 |[0m     [90m// Reset poster when video starts loading[0m
+  [90m152 |[0m     setPoster([36mnull[0m);
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:229:9
+the name `handleLoadStart` is defined multiple times
+  [90m227 |[0m n  
+  [90m228 |[0m   [90m// Video event handlers[0m
+[31m[1m>[0m [90m229 |[0m   [36mconst[0m handleLoadStart = () => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^[0m
+  [90m230 |[0m     setVideoError([36mnull[0m);
+  [90m231 |[0m     [90m// Reset poster when video starts loading[0m
+  [90m232 |[0m     setPoster([36mnull[0m);
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:309:9
+the name `handleLoadStart` is defined multiple times
+  [90m307 |[0m n  
+  [90m308 |[0m   [90m// Video event handlers[0m
+[31m[1m>[0m [90m309 |[0m   [36mconst[0m handleLoadStart = () => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^[0m
+  [90m310 |[0m     setVideoError([36mnull[0m);
+  [90m311 |[0m     [90m// Reset poster when video starts loading[0m
+  [90m312 |[0m     setPoster([36mnull[0m);
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:389:9
+the name `handleLoadStart` is defined multiple times
+  [90m387 |[0m n  
+  [90m388 |[0m   [90m// Video event handlers[0m
+[31m[1m>[0m [90m389 |[0m   [36mconst[0m handleLoadStart = () => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^[0m
+  [90m390 |[0m     setVideoError([36mnull[0m);
+  [90m391 |[0m     [90m// Reset poster when video starts loading[0m
+  [90m392 |[0m     setPoster([36mnull[0m);
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:469:9
+the name `handleLoadStart` is defined multiple times
+  [90m467 |[0m n  
+  [90m468 |[0m   [90m// Video event handlers[0m
+[31m[1m>[0m [90m469 |[0m   [36mconst[0m handleLoadStart = () => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^[0m
+  [90m470 |[0m     setVideoError([36mnull[0m);
+  [90m471 |[0m     [90m// Reset poster when video starts loading[0m
+  [90m472 |[0m     setPoster([36mnull[0m);
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:155:9
+the name `handleLoadedMetadata` is defined multiple times
+  [90m153 |[0m   };
+  [90m154 |[0m
+[31m[1m>[0m [90m155 |[0m   [36mconst[0m handleLoadedMetadata = () => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^^^^^^[0m
+  [90m156 |[0m     [36mconst[0m video = videoRef.current;
+  [90m157 |[0m     [36mif[0m (!video) [36mreturn[0m;
+  [90m158 |[0m
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:235:9
+the name `handleLoadedMetadata` is defined multiple times
+  [90m233 |[0m   };
+  [90m234 |[0m
+[31m[1m>[0m [90m235 |[0m   [36mconst[0m handleLoadedMetadata = () => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^^^^^^[0m
+  [90m236 |[0m     [36mconst[0m video = videoRef.current;
+  [90m237 |[0m     [36mif[0m (!video) [36mreturn[0m;
+  [90m238 |[0m
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:315:9
+the name `handleLoadedMetadata` is defined multiple times
+  [90m313 |[0m   };
+  [90m314 |[0m
+[31m[1m>[0m [90m315 |[0m   [36mconst[0m handleLoadedMetadata = () => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^^^^^^[0m
+  [90m316 |[0m     [36mconst[0m video = videoRef.current;
+  [90m317 |[0m     [36mif[0m (!video) [36mreturn[0m;
+  [90m318 |[0m
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:395:9
+the name `handleLoadedMetadata` is defined multiple times
+  [90m393 |[0m   };
+  [90m394 |[0m
+[31m[1m>[0m [90m395 |[0m   [36mconst[0m handleLoadedMetadata = () => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^^^^^^[0m
+  [90m396 |[0m     [36mconst[0m video = videoRef.current;
+  [90m397 |[0m     [36mif[0m (!video) [36mreturn[0m;
+  [90m398 |[0m
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:475:9
+the name `handleLoadedMetadata` is defined multiple times
+  [90m473 |[0m   };
+  [90m474 |[0m
+[31m[1m>[0m [90m475 |[0m   [36mconst[0m handleLoadedMetadata = () => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^^^^^^[0m
+  [90m476 |[0m     [36mconst[0m video = videoRef.current;
+  [90m477 |[0m     [36mif[0m (!video) [36mreturn[0m;
+  [90m478 |[0m
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:163:9
+the name `handleVideoError` is defined multiple times
+  [90m161 |[0m   };
+  [90m162 |[0m
+[31m[1m>[0m [90m163 |[0m   [36mconst[0m handleVideoError = (e: [33mReact[0m.[33mSyntheticEvent[0m<[33mHTMLVideoElement[0m, [33mEvent[0m>) => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^^[0m
+  [90m164 |[0m     [36mconst[0m errorMsg = videoRef.current?.error?.message || [32m"Unknown video error"[0m;
+  [90m165 |[0m     setVideoError([32m`Failed to load video: [0m${errorMsg[32m}`[0m);
+  [90m166 |[0m     console.error([32m"Video error:"[0m, e);
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:243:9
+the name `handleVideoError` is defined multiple times
+  [90m241 |[0m   };
+  [90m242 |[0m
+[31m[1m>[0m [90m243 |[0m   [36mconst[0m handleVideoError = (e: [33mReact[0m.[33mSyntheticEvent[0m<[33mHTMLVideoElement[0m, [33mEvent[0m>) => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^^[0m
+  [90m244 |[0m     [36mconst[0m errorMsg = videoRef.current?.error?.message || [32m"Unknown video error"[0m;
+  [90m245 |[0m     setVideoError([32m`Failed to load video: [0m${errorMsg[32m}`[0m);
+  [90m246 |[0m     console.error([32m"Video error:"[0m, e);
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:323:9
+the name `handleVideoError` is defined multiple times
+  [90m321 |[0m   };
+  [90m322 |[0m
+[31m[1m>[0m [90m323 |[0m   [36mconst[0m handleVideoError = (e: [33mReact[0m.[33mSyntheticEvent[0m<[33mHTMLVideoElement[0m, [33mEvent[0m>) => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^^[0m
+  [90m324 |[0m     [36mconst[0m errorMsg = videoRef.current?.error?.message || [32m"Unknown video error"[0m;
+  [90m325 |[0m     setVideoError([32m`Failed to load video: [0m${errorMsg[32m}`[0m);
+  [90m326 |[0m     console.error([32m"Video error:"[0m, e);
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:403:9
+the name `handleVideoError` is defined multiple times
+  [90m401 |[0m   };
+  [90m402 |[0m
+[31m[1m>[0m [90m403 |[0m   [36mconst[0m handleVideoError = (e: [33mReact[0m.[33mSyntheticEvent[0m<[33mHTMLVideoElement[0m, [33mEvent[0m>) => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^^[0m
+  [90m404 |[0m     [36mconst[0m errorMsg = videoRef.current?.error?.message || [32m"Unknown video error"[0m;
+  [90m405 |[0m     setVideoError([32m`Failed to load video: [0m${errorMsg[32m}`[0m);
+  [90m406 |[0m     console.error([32m"Video error:"[0m, e);
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:483:9
+the name `handleVideoError` is defined multiple times
+  [90m481 |[0m   };
+  [90m482 |[0m
+[31m[1m>[0m [90m483 |[0m   [36mconst[0m handleVideoError = (e: [33mReact[0m.[33mSyntheticEvent[0m<[33mHTMLVideoElement[0m, [33mEvent[0m>) => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^^[0m
+  [90m484 |[0m     [36mconst[0m errorMsg = videoRef.current?.error?.message || [32m"Unknown video error"[0m;
+  [90m485 |[0m     setVideoError([32m`Failed to load video: [0m${errorMsg[32m}`[0m);
+  [90m486 |[0m     console.error([32m"Video error:"[0m, e);
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:169:9
+the name `tryToCaptureFirstFrame` is defined multiple times
+  [90m167 |[0m   };
+  [90m168 |[0m
+[31m[1m>[0m [90m169 |[0m   [36mconst[0m tryToCaptureFirstFrame = (video: [33mHTMLVideoElement[0m) => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m170 |[0m     [90m// Wait a bit for video to be ready[0m
+  [90m171 |[0m     [36mif[0m (video.readyState >= [35m2[0m) {
+  [90m172 |[0m       captureFrameAsPoster(video);
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:249:9
+the name `tryToCaptureFirstFrame` is defined multiple times
+  [90m247 |[0m   };
+  [90m248 |[0m
+[31m[1m>[0m [90m249 |[0m   [36mconst[0m tryToCaptureFirstFrame = (video: [33mHTMLVideoElement[0m) => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m250 |[0m     [90m// Wait a bit for video to be ready[0m
+  [90m251 |[0m     [36mif[0m (video.readyState >= [35m2[0m) {
+  [90m252 |[0m       captureFrameAsPoster(video);
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:329:9
+the name `tryToCaptureFirstFrame` is defined multiple times
+  [90m327 |[0m   };
+  [90m328 |[0m
+[31m[1m>[0m [90m329 |[0m   [36mconst[0m tryToCaptureFirstFrame = (video: [33mHTMLVideoElement[0m) => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m330 |[0m     [90m// Wait a bit for video to be ready[0m
+  [90m331 |[0m     [36mif[0m (video.readyState >= [35m2[0m) {
+  [90m332 |[0m       captureFrameAsPoster(video);
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:409:9
+the name `tryToCaptureFirstFrame` is defined multiple times
+  [90m407 |[0m   };
+  [90m408 |[0m
+[31m[1m>[0m [90m409 |[0m   [36mconst[0m tryToCaptureFirstFrame = (video: [33mHTMLVideoElement[0m) => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m410 |[0m     [90m// Wait a bit for video to be ready[0m
+  [90m411 |[0m     [36mif[0m (video.readyState >= [35m2[0m) {
+  [90m412 |[0m       captureFrameAsPoster(video);
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+
+./src/components/ConfirmedPage.tsx:489:9
+the name `tryToCaptureFirstFrame` is defined multiple times
+  [90m487 |[0m   };
+  [90m488 |[0m
+[31m[1m>[0m [90m489 |[0m   [36mconst[0m tryToCaptureFirstFrame = (video: [33mHTMLVideoElement[0m) => {
+  [90m    |[0m         [31m[1m^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m490 |[0m     [90m// Wait a bit for video to be ready[0m
+  [90m491 |[0m     [36mif[0m (video.readyState >= [35m2[0m) {
+  [90m492 |[0m       captureFrameAsPoster(video);
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+ GET /confirmed 500 in 105ms (next.js: 72ms, application-code: 33ms)
+[browser] Uncaught Error: ./src/components/ConfirmedPage.tsx:505:9
+the name `captureFrameAsPoster` is defined multiple times
+  503 |   };
+  504 |
+> 505 |   const captureFrameAsPoster = (video: HTMLVideoElement) => {
+      |         ^^^^^^^^^^^^^^^^^^^^
+  506 |     try {
+  507 |       // Create a temporary canvas to capture the frame
+  508 |       const canvas = document.createElement("canvas");
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/ConfirmedPage.tsx
+    ./src/app/confirmed/page.tsx
+
+
+    at <unknown> (Error: ./src/components/ConfirmedPage.tsx:505:9)
+    at <unknown> (Error: (./src/components/ConfirmedPage.tsx:505:9)
+✓ Compiled in 254ms
+ GET /confirmed 200 in 206ms (next.js: 11ms, application-code: 195ms)
+✓ Compiled in 136ms
+ GET /confirmed 200 in 327ms (next.js: 176ms, application-code: 151ms)
+✓ Compiled in 144ms
+ GET /confirmed 200 in 332ms (next.js: 192ms, application-code: 140ms)
+✓ Compiled in 126ms
+ GET /confirmed 200 in 346ms (next.js: 194ms, application-code: 152ms)
+✓ Compiled in 133ms
+ GET /confirmed 200 in 334ms (next.js: 186ms, application-code: 147ms)
+✓ Compiled in 119ms
+ GET /confirmed 200 in 312ms (next.js: 175ms, application-code: 138ms)
+✓ Compiled in 122ms
+ GET /confirmed 200 in 315ms (next.js: 174ms, application-code: 141ms)
+✓ Compiled in 111ms
+ GET /confirmed 200 in 334ms (next.js: 184ms, application-code: 150ms)
+ GET /confirmed 200 in 543ms (next.js: 10ms, application-code: 533ms)
+ GET /confirmed 200 in 127ms (next.js: 9ms, application-code: 118ms)
+ GET /confirmed 200 in 175ms (next.js: 9ms, application-code: 166ms)
+ GET /confirmed 200 in 159ms (next.js: 9ms, application-code: 150ms)
