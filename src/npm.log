@@ -1239,3 +1239,13 @@ Import trace:
  GET /confirmed 200 in 127ms (next.js: 9ms, application-code: 118ms)
  GET /confirmed 200 in 175ms (next.js: 9ms, application-code: 166ms)
  GET /confirmed 200 in 159ms (next.js: 9ms, application-code: 150ms)
+✓ Compiled in 138ms
+ GET /confirmed 200 in 363ms (next.js: 250ms, application-code: 113ms)
+✓ Compiled in 140ms
+ GET /confirmed 200 in 446ms (next.js: 262ms, application-code: 184ms)
+✓ Compiled in 360ms
+ GET /confirmed 200 in 515ms (next.js: 250ms, application-code: 266ms)
+✓ Compiled in 154ms
+ GET /confirmed 200 in 580ms (next.js: 289ms, application-code: 290ms)
+ GET /confirmed 200 in 513ms (next.js: 15ms, application-code: 498ms)
+[?25h
