@@ -290,18 +290,16 @@ h1, h2, h3, h4, h5, h6 {
 
   .videoFrame > iframe {
     transform-origin: center top;
-    transform: scale(0.92);
-    width: calc(100% / 0.92);
-    height: calc(100% / 0.92);
+    /* Nudge the iframe upward slightly to remove the top black strip
+       observed on some mobile players and avoid cropping the bottom. */
+    transform: translateY(-6%) scale(0.94);
     display: block;
   }
 
   /* Hero uses a direct iframe inside a liquid-glass container; target it too */
   .liquid-glass > div > iframe {
     transform-origin: center top;
-    transform: scale(0.92);
-    width: calc(100% / 0.92);
-    height: calc(100% / 0.92);
+    transform: translateY(-6%) scale(0.94);
     display: block;
   }
 }
