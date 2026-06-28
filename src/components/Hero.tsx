@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import Script from 'next/script';
-import { useState } from 'react';
-import LowTicketBackground from './LowTicketBackground';
+import { motion } from "framer-motion";
+import Script from "next/script";
+import { useState } from "react";
+import LowTicketBackground from "./LowTicketBackground";
 
 const easeOutExpo = [0.16, 1, 0.3, 1] as const;
 
@@ -11,8 +11,8 @@ export default function Hero() {
   // If the placeholder VSL fails to load (404 or unsupported), we hide the
   // <video poster="/poster.svg" poster="/poster.svg"> entirely so we don't leave a busted player on the live site.
   const [videoOk, setVideoOk] = useState(true);
-  const [error, setError] = useError(null);
-  
+  const [error, setError] = useState<Error | null>(null);
+
   // Google Drive video ID for embed
   const videoId = "1wj5ie-CjHnhavzTkfRRtTz1gPshteq3L";
 
@@ -32,16 +32,17 @@ export default function Hero() {
       <h1
         className="relative z-10 text-center"
         style={{
-          color: 'var(--white)',
-          fontFamily: 'var(--font-inter-tight), Inter Tight, system-ui, sans-serif',
+          color: "var(--white)",
+          fontFamily:
+            "var(--font-inter-tight), Inter Tight, system-ui, sans-serif",
           fontWeight: 900,
-          letterSpacing: '-0.025em',
+          letterSpacing: "-0.025em",
           lineHeight: 0.96,
         }}
       >
         <motion.span
           className="block"
-          style={{ fontSize: 'clamp(32px, 5.5vw, 54px)' }}
+          style={{ fontSize: "clamp(32px, 5.5vw, 54px)" }}
           initial={{ opacity: 0, y: 20, scale: 0.98 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 1, delay: 0.3, ease: easeOutExpo }}
@@ -51,7 +52,7 @@ export default function Hero() {
 
         <motion.span
           className="block"
-          style={{ fontSize: 'clamp(32px, 5.5vw, 54px)' }}
+          style={{ fontSize: "clamp(32px, 5.5vw, 54px)" }}
           initial={{ opacity: 0, y: 20, scale: 0.98 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 1, delay: 0.5, ease: easeOutExpo }}
@@ -62,9 +63,9 @@ export default function Hero() {
         <motion.span
           className="block"
           style={{
-            fontSize: 'clamp(32px, 5.5vw, 54px)',
-            color: 'var(--gold)',
-            textShadow: '0 0 60px rgba(212,175,55,0.35)',
+            fontSize: "clamp(32px, 5.5vw, 54px)",
+            color: "var(--gold)",
+            textShadow: "0 0 60px rgba(212,175,55,0.35)",
           }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -83,10 +84,10 @@ export default function Hero() {
         transition={{ duration: 1, delay: 1.4, ease: easeOutExpo }}
         className="liquid-glass relative z-10 mt-10 w-full max-w-[1180px] overflow-hidden md:mt-16"
         style={{
-          aspectRatio: '16 / 9',
+          aspectRatio: "16 / 9",
           borderRadius: 24,
           boxShadow:
-            '0 40px 80px rgba(0,0,0,0.6), 0 0 60px rgba(212,175,55,0.12)',
+            "0 40px 80px rgba(0,0,0,0.6), 0 0 60px rgba(212,175,55,0.12)",
         }}
       >
         {videoOk ? (
@@ -101,9 +102,9 @@ export default function Hero() {
             {error ? (
               <div
                 style={{
-                  color: 'red',
+                  color: "red",
                   padding: 20,
-                  textAlign: 'center',
+                  textAlign: "center",
                 }}
               >
                 Video error: {error.message}
@@ -115,16 +116,18 @@ export default function Hero() {
                 className="flex h-full w-full flex-col items-center justify-center text-center"
                 style={{
                   background:
-                    'radial-gradient(ellipse 70% 60% at 50% 50%, rgba(212,175,55,0.08), transparent 65%), #0d0d0d',
-                  color: 'rgba(244,237,224,0.6)',
+                    "radial-gradient(ellipse 70% 60% at 50% 50%, rgba(212,175,55,0.08), transparent 65%), #0d0d0d",
+                  color: "rgba(244,237,224,0.6)",
                   fontWeight: 600,
-                  letterSpacing: '0.18em',
-                  textTransform: 'uppercase',
+                  letterSpacing: "0.18em",
+                  textTransform: "uppercase",
                   fontSize: 12,
                   padding: 24,
                 }}
               >
-                <span style={{ color: 'var(--gold)', marginBottom: 8 }}>Orovia</span>
+                <span style={{ color: "var(--gold)", marginBottom: 8 }}>
+                  Orovia
+                </span>
                 <span>VSL coming soon</span>
               </div>
             )}
@@ -155,9 +158,4 @@ export default function Hero() {
       />
     </section>
   );
-}
-
-// Helper hook to avoid TS error on useState null
-function useError<T>(initial: T | null) {
-  return useState<T | null>(initial);
 }
