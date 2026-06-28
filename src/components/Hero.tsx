@@ -101,6 +101,8 @@ export default function Hero() {
                 width: "100%",
                 height: "100%",
                 border: 0,
+                objectFit: "contain",
+                objectPosition: "center",
               }}
               allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
               allowFullScreen
