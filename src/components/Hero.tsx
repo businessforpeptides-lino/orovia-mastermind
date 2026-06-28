@@ -8,13 +8,13 @@ import LowTicketBackground from "./LowTicketBackground";
 const easeOutExpo = [0.16, 1, 0.3, 1] as const;
 
 export default function Hero() {
-  // If the placeholder VSL fails to load (404 or unsupported), we hide the
-  // <video poster="/poster.svg" poster="/poster.svg"> entirely so we don't leave a busted player on the live site.
+  // If the placeholder VSL fails to load, we fall back to the Drive embed.
   const [videoOk, setVideoOk] = useState(true);
-  const [error, setError] = useState<Error | null>(null);
 
   // Google Drive video ID for embed
   const videoId = "1FQy62PZ8Jjt7wDxv17IL_PsHfYhcdvJG";
+  const driveVideoUrl = `https://drive.google.com/uc?export=download&id=${videoId}`;
+  const driveIframeUrl = `https://drive.google.com/file/d/${videoId}/preview?autoplay=0&playsinline=1`;
 
   return (
     <section
@@ -99,8 +99,28 @@ export default function Hero() {
           }}
         >
           {videoOk ? (
+            <video
+              src={driveVideoUrl}
+              controls
+              playsInline
+              preload="metadata"
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                border: "none",
+                display: "block",
+                objectFit: "cover",
+              }}
+              onError={() => {
+                setVideoOk(false);
+              }}
+            />
+          ) : (
             <iframe
-              src={`https://drive.google.com/file/d/${videoId}/preview?autoplay=0`}
+              src={driveIframeUrl}
               style={{
                 position: "absolute",
                 top: 0,
@@ -113,41 +133,6 @@ export default function Hero() {
               allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
               allowFullScreen
             />
-          ) : (
-            <>
-              {error ? (
-                <div
-                  style={{
-                    color: "red",
-                    padding: 20,
-                    textAlign: "center",
-                  }}
-                >
-                  Video error: {error.message}
-                </div>
-              ) : (
-                // Glass card fallback — same dimensions, just a placeholder
-                // so the layout doesn't collapse before the real VSL is dropped in.
-                <div
-                  className="flex h-full w-full flex-col items-center justify-center text-center"
-                  style={{
-                    background:
-                      "radial-gradient(ellipse 70% 60% at 50% 50%, rgba(212,175,55,0.08), transparent 65%), #0d0d0d",
-                    color: "rgba(244,237,224,0.6)",
-                    fontWeight: 600,
-                    letterSpacing: "0.18em",
-                    textTransform: "uppercase",
-                    fontSize: 12,
-                    padding: 24,
-                  }}
-                >
-                  <span style={{ color: "var(--gold)", marginBottom: 8 }}>
-                    Orovia
-                  </span>
-                  <span>VSL coming soon</span>
-                </div>
-              )}
-            </>
           )}
         </div>
       </motion.div>

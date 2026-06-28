@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata } from "next";
 import {
   helveticaNowDisplay,
   helveticaNowText,
@@ -8,23 +8,23 @@ import {
   dmSerifDisplay,
   interTightFont,
   cormorantFont,
-} from './fonts';
-import './globals.css';
+} from "./fonts";
+import "./globals.css";
 
 export const metadata: Metadata = {
-  title: 'The Orovia Protocol',
-  description: 'What if your entire peptide company was built for you?',
-  metadataBase: new URL('https://oroviamastermind.com'),
+  title: "The Orovia Protocol",
+  description: "What if your entire peptide company was built for you?",
+  metadataBase: new URL("https://www.oroviamastermind.com"),
   openGraph: {
-    title: 'The Orovia Protocol',
-    description: 'What if your entire peptide company was built for you?',
-    type: 'website',
-    url: 'https://oroviamastermind.com',
+    title: "The Orovia Protocol",
+    description: "What if your entire peptide company was built for you?",
+    type: "website",
+    url: "https://www.oroviamastermind.com",
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'The Orovia Protocol',
-    description: 'What if your entire peptide company was built for you?',
+    card: "summary_large_image",
+    title: "The Orovia Protocol",
+    description: "What if your entire peptide company was built for you?",
   },
 };
 
@@ -32,10 +32,10 @@ export const metadata: Metadata = {
 // iOS respect safe-area insets so the gold halo + film grain extend edge to
 // edge under the notch / home indicator.
 export const viewport = {
-  width: 'device-width',
+  width: "device-width",
   initialScale: 1,
-  viewportFit: 'cover' as const,
-  themeColor: '#141414',
+  viewportFit: "cover" as const,
+  themeColor: "#141414",
 };
 
 export default function RootLayout({
@@ -55,7 +55,7 @@ export default function RootLayout({
         dmSerifDisplay.variable,
         interTightFont.variable,
         cormorantFont.variable,
-      ].join(' ')}
+      ].join(" ")}
     >
       <body className="font-body antialiased">{children}</body>
     </html>
