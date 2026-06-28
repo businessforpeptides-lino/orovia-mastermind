@@ -2,20 +2,11 @@
 
 import { motion } from "framer-motion";
 import Script from "next/script";
-import { useState } from "react";
 import LowTicketBackground from "./LowTicketBackground";
 
 const easeOutExpo = [0.16, 1, 0.3, 1] as const;
 
 export default function Hero() {
-  // If the placeholder VSL fails to load, we fall back to the Drive embed.
-  const [videoOk, setVideoOk] = useState(true);
-
-  // Google Drive video ID for embed
-  const videoId = "1FQy62PZ8Jjt7wDxv17IL_PsHfYhcdvJG";
-  const driveVideoUrl = `https://drive.google.com/uc?export=download&id=${videoId}`;
-  const driveIframeUrl = `https://drive.google.com/file/d/${videoId}/preview?autoplay=0&playsinline=1`;
-
   return (
     <section
       id="top"
@@ -98,42 +89,21 @@ export default function Hero() {
             overflow: "hidden",
           }}
         >
-          {videoOk ? (
-            <video
-              src={driveVideoUrl}
-              controls
-              playsInline
-              preload="metadata"
-              style={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                width: "100%",
-                height: "100%",
-                border: "none",
-                display: "block",
-                objectFit: "cover",
-              }}
-              onError={() => {
-                setVideoOk(false);
-              }}
-            />
-          ) : (
-            <iframe
-              src={driveIframeUrl}
-              style={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                width: "100%",
-                height: "100%",
-                border: "none",
-                display: "block",
-              }}
-              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
-              allowFullScreen
-            />
-          )}
+          <iframe
+            src="https://www.youtube.com/embed/B9iHqlnkfZw"
+            title="28 June 2026"
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              border: "none",
+              display: "block",
+            }}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          />
         </div>
       </motion.div>
 

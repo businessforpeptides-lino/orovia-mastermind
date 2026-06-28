@@ -286,8 +286,10 @@ export default function ConfirmedPage() {
         <div data-video-wrap className={s.videoWrap}>
           <div className={s.videoFrame}>
             <iframe
-              src="https://drive.google.com/file/d/1wj5ie-CjHnhavzTkfRRtTz1gPshteq3L/preview?autoplay=0"
-              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
+              src="https://www.youtube.com/embed/QaxjUU3o-Z4"
+              title="28 June 2026"
+              style={{ width: "100%", height: "100%", border: "none" }}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
             />
           </div>
