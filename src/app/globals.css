@@ -277,3 +277,31 @@ h1, h2, h3, h4, h5, h6 {
 ::-webkit-scrollbar-track { background: #0A0A0A; }
 ::-webkit-scrollbar-thumb { background: #2A2A2D; border-radius: 8px; }
 ::-webkit-scrollbar-thumb:hover { background: #3A3A3D; }
+
+/* Mobile iframe scaling fix: some embedded players (Google Drive preview)
+   render at a different internal viewport on mobile and appear cropped.
+   We scale the iframe slightly down and compensate width/height so the
+   visible content fits inside the container without cropping. This only
+   applies to narrow viewports to avoid affecting desktop rendering. */
+@media (max-width: 640px) {
+  .videoFrame {
+    max-height: calc(100vh - 140px);
+  }
+
+  .videoFrame > iframe {
+    transform-origin: center top;
+    transform: scale(0.92);
+    width: calc(100% / 0.92);
+    height: calc(100% / 0.92);
+    display: block;
+  }
+
+  /* Hero uses a direct iframe inside a liquid-glass container; target it too */
+  .liquid-glass > div > iframe {
+    transform-origin: center top;
+    transform: scale(0.92);
+    width: calc(100% / 0.92);
+    height: calc(100% / 0.92);
+    display: block;
+  }
+}
