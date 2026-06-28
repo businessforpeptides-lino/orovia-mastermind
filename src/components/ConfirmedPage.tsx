@@ -1,52 +1,98 @@
-'use client';
+"use client";
 
-import React, { useEffect, useRef, useState } from 'react';
-import Script from 'next/script';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import PageBackground from './PageBackground';
-import s from './ConfirmedPage.module.css';
-
+import React, { useEffect, useRef, useState } from "react";
+import Script from "next/script";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import PageBackground from "./PageBackground";
+import s from "./ConfirmedPage.module.css";
 
 const FAQ_ITEMS = [
   {
-    q: 'What should I do to prepare for the call?',
-    a: 'Watch the video above in full before the call. Know your current monthly revenue and what you are doing now to generate it. The call moves fast. Come ready, not curious.',
+    q: "What should I do to prepare for the call?",
+    a: "Watch the video above in full before the call. Know your current monthly revenue and what you are doing now to generate it. The call moves fast. Come ready, not curious.",
   },
   {
-    q: 'What if I miss my call or need to reschedule?',
-    a: 'Reply YES to our text immediately to confirm your slot. If you need to reschedule, contact us at least 24 hours in advance. Same-day cancellations without notice forfeit the spot.',
+    q: "What if I miss my call or need to reschedule?",
+    a: "Reply YES to our text immediately to confirm your slot. If you need to reschedule, contact us at least 24 hours in advance. Same-day cancellations without notice forfeit the spot.",
   },
   {
-    q: 'How is this different from other programs?',
-    a: 'We build the infrastructure for you. Most programs hand you a course and a Discord. We give you a live brand, real COAs, a compliant processor, and a system that has already generated revenue for other affiliates.',
+    q: "How is this different from other programs?",
+    a: "We build the infrastructure for you. Most programs hand you a course and a Discord. We give you a live brand, real COAs, a compliant processor, and a system that has already generated revenue for other affiliates.",
   },
 ];
 
 const CHECKPOINTS = [
-  { label: 'Check email', body: 'Calendar invite is on the way. Save the link immediately.' },
-  { label: 'Reply to our text', body: 'Team will text to confirm. Reply YES right away. Slots expire.' },
-  { label: 'Watch the video above', body: 'Required. Come ready, not curious.' },
-  { label: 'Show up ready', body: 'Know your monthly revenue goal. Be ready to move when we give you the green light.' },
+  {
+    label: "Check email",
+    body: "Calendar invite is on the way. Save the link immediately.",
+  },
+  {
+    label: "Reply to our text",
+    body: "Team will text to confirm. Reply YES right away. Slots expire.",
+  },
+  {
+    label: "Watch the video above",
+    body: "Required. Come ready, not curious.",
+  },
+  {
+    label: "Show up ready",
+    body: "Know your monthly revenue goal. Be ready to move when we give you the green light.",
+  },
 ];
 
 /* 5 discord screenshot placeholders — each has a unique accent for variety */
 const DISCORD_CARDS = [
-  { label: '@lino_peptides', accent: '201, 169, 97' },
-  { label: '@heroes_discord', accent: '88, 101, 242' },
-  { label: '@abdullah_scales', accent: '201, 169, 97' },
-  { label: '@jordan_ecom', accent: '88, 101, 242' },
-  { label: '@marcus_info', accent: '201, 169, 97' },
+  { label: "@lino_peptides", accent: "201, 169, 97" },
+  { label: "@heroes_discord", accent: "88, 101, 242" },
+  { label: "@abdullah_scales", accent: "201, 169, 97" },
+  { label: "@jordan_ecom", accent: "88, 101, 242" },
+  { label: "@marcus_info", accent: "201, 169, 97" },
 ];
 
 const BUILDS = [
-  { url: 'oroviawellness.com',    name: 'Orovia Wellness',    href: 'https://oroviawellness.com',    hue: '201, 169, 97'  },
-  { url: 'imoriwellness.com',     name: 'Imori Wellness',     href: 'https://imoriwellness.com',     hue: '196, 30, 58'   },
-  { url: 'rejuvenare.com',        name: 'Rejuvenare',         href: 'https://rejuvenare.com',        hue: '45, 122, 122'  },
-  { url: 'branchroot.com',        name: 'Branch Root',        href: 'https://branchroot.com',        hue: '60, 179, 113'  },
-  { url: 'offlinepeptides.com',   name: 'Offline Peptides',   href: 'https://offlinepeptides.com',   hue: '70, 130, 180'  },
-  { url: 'evolvixwellness.com',   name: 'Evolvix Wellness',   href: 'https://evolvixwellness.com',   hue: '147, 112, 219' },
-  { url: 'newgenixevolution.com', name: 'Newgenix Evolution', href: 'https://newgenixevolution.com', hue: '205, 127, 50'  },
+  {
+    url: "oroviawellness.com",
+    name: "Orovia Wellness",
+    href: "https://oroviawellness.com",
+    hue: "201, 169, 97",
+  },
+  {
+    url: "imoriwellness.com",
+    name: "Imori Wellness",
+    href: "https://imoriwellness.com",
+    hue: "196, 30, 58",
+  },
+  {
+    url: "rejuvenare.com",
+    name: "Rejuvenare",
+    href: "https://rejuvenare.com",
+    hue: "45, 122, 122",
+  },
+  {
+    url: "branchroot.com",
+    name: "Branch Root",
+    href: "https://branchroot.com",
+    hue: "60, 179, 113",
+  },
+  {
+    url: "offlinepeptides.com",
+    name: "Offline Peptides",
+    href: "https://offlinepeptides.com",
+    hue: "70, 130, 180",
+  },
+  {
+    url: "evolvixwellness.com",
+    name: "Evolvix Wellness",
+    href: "https://evolvixwellness.com",
+    hue: "147, 112, 219",
+  },
+  {
+    url: "newgenixevolution.com",
+    name: "Newgenix Evolution",
+    href: "https://newgenixevolution.com",
+    hue: "205, 127, 50",
+  },
 ];
 
 export default function ConfirmedPage() {
@@ -61,63 +107,122 @@ export default function ConfirmedPage() {
   const getBuildDeckStyle = (i: number): React.CSSProperties => {
     const n = BUILDS.length;
     const offset = (i - buildsIndex + n) % n;
-    const t = 'transform 0.45s cubic-bezier(0.2,0.8,0.2,1), opacity 0.4s ease';
+    const t = "transform 0.45s cubic-bezier(0.2,0.8,0.2,1), opacity 0.4s ease";
     // offset 0 = active (center), offset 1 = right peek, offset 2 = left peek
-    if (offset === 0) return { transform: 'translateX(-50%) scale(1)', zIndex: 3, opacity: 1, transition: t };
-    if (offset === 1) return { transform: 'translateX(calc(-50% + 60vw)) rotate(6deg) scale(0.84)', zIndex: 2, opacity: 0.75, transition: t };
-    return { transform: 'translateX(calc(-50% - 60vw)) rotate(-6deg) scale(0.84)', zIndex: 1, opacity: 0.75, transition: t };
+    if (offset === 0)
+      return {
+        transform: "translateX(-50%) scale(1)",
+        zIndex: 3,
+        opacity: 1,
+        transition: t,
+      };
+    if (offset === 1)
+      return {
+        transform: "translateX(calc(-50% + 60vw)) rotate(6deg) scale(0.84)",
+        zIndex: 2,
+        opacity: 0.75,
+        transition: t,
+      };
+    return {
+      transform: "translateX(calc(-50% - 60vw)) rotate(-6deg) scale(0.84)",
+      zIndex: 1,
+      opacity: 0.75,
+      transition: t,
+    };
   };
 
   useEffect(() => {
-    if (typeof window === 'undefined') return;
+    if (typeof window === "undefined") return;
     gsap.registerPlugin(ScrollTrigger);
 
     const ctx = gsap.context(() => {
       // ── Hero entrance ──────────────────────────────────────────────────────
-      const heroTl = gsap.timeline({ defaults: { ease: 'power3.out', immediateRender: false } });
+      const heroTl = gsap.timeline({
+        defaults: { ease: "power3.out", immediateRender: false },
+      });
       heroTl
-        .from('[data-badge]',          { y: -28, opacity: 0, scale: 0.86, duration: 0.7 })
-        .from('[data-h1-line]',        { y: 60, opacity: 0, duration: 0.7, stagger: 0.12 }, '-=0.2')
-        .from('[data-hero-sub]',       { y: 20, opacity: 0, duration: 0.6 }, '-=0.25')
-        .from('[data-hero-chips] > *', { y: 16, opacity: 0, duration: 0.45, stagger: 0.1 }, '-=0.3');
+        .from("[data-badge]", {
+          y: -28,
+          opacity: 0,
+          scale: 0.86,
+          duration: 0.7,
+        })
+        .from(
+          "[data-h1-line]",
+          { y: 60, opacity: 0, duration: 0.7, stagger: 0.12 },
+          "-=0.2",
+        )
+        .from("[data-hero-sub]", { y: 20, opacity: 0, duration: 0.6 }, "-=0.25")
+        .from(
+          "[data-hero-chips] > *",
+          { y: 16, opacity: 0, duration: 0.45, stagger: 0.1 },
+          "-=0.3",
+        );
 
       // ── Video section ──────────────────────────────────────────────────────
-      gsap.from('[data-video-wrap]', {
-        y: 50, opacity: 0, scale: 0.96, duration: 0.8, ease: 'power2.out', immediateRender: false,
-        scrollTrigger: { trigger: '[data-video-wrap]', start: 'top 82%' },
+      gsap.from("[data-video-wrap]", {
+        y: 50,
+        opacity: 0,
+        scale: 0.96,
+        duration: 0.8,
+        ease: "power2.out",
+        immediateRender: false,
+        scrollTrigger: { trigger: "[data-video-wrap]", start: "top 82%" },
       });
 
       // ── Live builds ────────────────────────────────────────────────────────
-      gsap.from('[data-build-card]', {
-        y: 50, opacity: 0, scale: 0.94, duration: 0.7, stagger: 0.12, ease: 'power2.out', immediateRender: false,
-        scrollTrigger: { trigger: '[data-builds]', start: 'top 82%' },
+      gsap.from("[data-build-card]", {
+        y: 50,
+        opacity: 0,
+        scale: 0.94,
+        duration: 0.7,
+        stagger: 0.12,
+        ease: "power2.out",
+        immediateRender: false,
+        scrollTrigger: { trigger: "[data-builds]", start: "top 82%" },
       });
 
       // ── Alert ──────────────────────────────────────────────────────────────
-      gsap.from('[data-alert]', {
-        y: 28, opacity: 0, duration: 0.6, ease: 'power2.out', immediateRender: false,
-        scrollTrigger: { trigger: '[data-alert]', start: 'top 84%' },
+      gsap.from("[data-alert]", {
+        y: 28,
+        opacity: 0,
+        duration: 0.6,
+        ease: "power2.out",
+        immediateRender: false,
+        scrollTrigger: { trigger: "[data-alert]", start: "top 84%" },
       });
 
       // ── Confirm section ────────────────────────────────────────────────────
-      gsap.from('[data-confirm]', {
-        y: 40, opacity: 0, duration: 0.7, ease: 'power2.out', immediateRender: false,
-        scrollTrigger: { trigger: '[data-confirm]', start: 'top 84%' },
+      gsap.from("[data-confirm]", {
+        y: 40,
+        opacity: 0,
+        duration: 0.7,
+        ease: "power2.out",
+        immediateRender: false,
+        scrollTrigger: { trigger: "[data-confirm]", start: "top 84%" },
       });
 
-
       // ── FAQ tiles — fly in from alternating sides ──────────────────────────
-      gsap.from('[data-faq]', {
-        opacity: 0, scale: 0.94, duration: 0.65,
-        x: (i: number) => i % 2 === 0 ? -65 : 65,
-        stagger: 0.1, ease: 'power2.out', immediateRender: false,
-        scrollTrigger: { trigger: '[data-faq-grid]', start: 'top 82%' },
+      gsap.from("[data-faq]", {
+        opacity: 0,
+        scale: 0.94,
+        duration: 0.65,
+        x: (i: number) => (i % 2 === 0 ? -65 : 65),
+        stagger: 0.1,
+        ease: "power2.out",
+        immediateRender: false,
+        scrollTrigger: { trigger: "[data-faq-grid]", start: "top 82%" },
       });
 
       // ── Checkpoints ────────────────────────────────────────────────────────
-      gsap.from('[data-checkpoint]', {
-        x: -50, opacity: 0, duration: 0.6, stagger: 0.12, ease: 'power2.out', immediateRender: false,
-        scrollTrigger: { trigger: '[data-checkpoints]', start: 'top 84%' },
+      gsap.from("[data-checkpoint]", {
+        x: -50,
+        opacity: 0,
+        duration: 0.6,
+        stagger: 0.12,
+        ease: "power2.out",
+        immediateRender: false,
+        scrollTrigger: { trigger: "[data-checkpoints]", start: "top 84%" },
       });
     }, rootRef);
 
@@ -139,8 +244,12 @@ export default function ConfirmedPage() {
         </div>
 
         <div className={s.h1Wrap}>
-          <span data-h1-line className={`${s.h1Line} ${s.h1LineWhite}`}>You&apos;re</span>
-          <span data-h1-line className={`${s.h1Line} ${s.h1LineRed}`}>Not In Yet.</span>
+          <span data-h1-line className={`${s.h1Line} ${s.h1LineWhite}`}>
+            You&apos;re
+          </span>
+          <span data-h1-line className={`${s.h1Line} ${s.h1LineRed}`}>
+            Not In Yet.
+          </span>
         </div>
 
         <p data-hero-sub className={s.heroSub}>
@@ -175,13 +284,13 @@ export default function ConfirmedPage() {
         </div>
 
         <div data-video-wrap className={s.videoWrap}>
-          <iframe
-            src="https://drive.google.com/file/d/1FQy62PZ8Jjt7wDxv17IL_PsHfYhcdvJG/preview?autoplay=0"
-            className="w-full h-full"
-            style={{ aspectRatio: '16/9', borderRadius: '16px' }}
-            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
-            allowFullScreen
-          />
+          <div className={s.videoFrame}>
+            <iframe
+              src="https://drive.google.com/file/d/1wj5ie-CjHnhavzTkfRRtTz1gPshteq3L/preview?autoplay=0"
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
         </div>
       </section>
       <section className={s.buildsSection}>
@@ -200,7 +309,7 @@ export default function ConfirmedPage() {
               target="_blank"
               rel="noopener noreferrer"
               className={`${s.buildCard} ${s[`buildCard${i + 1}` as keyof typeof s]}`}
-              style={{ '--hue': b.hue } as React.CSSProperties}
+              style={{ "--hue": b.hue } as React.CSSProperties}
             >
               <div className={s.chrome}>
                 <span className={`${s.dot} ${s.dotR}`} />
@@ -227,11 +336,17 @@ export default function ConfirmedPage() {
         {/* Mobile stacked deck */}
         <div
           className={s.buildsDeck}
-          onTouchStart={e => { buildsTouchX.current = e.touches[0].clientX; }}
-          onTouchEnd={e => {
+          onTouchStart={(e) => {
+            buildsTouchX.current = e.touches[0].clientX;
+          }}
+          onTouchEnd={(e) => {
             const dx = e.changedTouches[0].clientX - buildsTouchX.current;
             if (Math.abs(dx) < 35) return;
-            setBuildsIndex(i => dx < 0 ? (i + 1) % BUILDS.length : (i - 1 + BUILDS.length) % BUILDS.length);
+            setBuildsIndex((i) =>
+              dx < 0
+                ? (i + 1) % BUILDS.length
+                : (i - 1 + BUILDS.length) % BUILDS.length,
+            );
           }}
         >
           {BUILDS.map((b, i) => (
@@ -241,8 +356,13 @@ export default function ConfirmedPage() {
               target="_blank"
               rel="noopener noreferrer"
               className={`${s.buildCard} ${s.buildsDeckCard}`}
-              style={{ '--hue': b.hue, ...getBuildDeckStyle(i) } as React.CSSProperties}
-              onClick={e => {
+              style={
+                {
+                  "--hue": b.hue,
+                  ...getBuildDeckStyle(i),
+                } as React.CSSProperties
+              }
+              onClick={(e) => {
                 if ((i - buildsIndex + BUILDS.length) % BUILDS.length !== 0) {
                   e.preventDefault();
                   setBuildsIndex(i);
@@ -273,7 +393,7 @@ export default function ConfirmedPage() {
             {BUILDS.map((_, i) => (
               <button
                 key={i}
-                className={`${s.deckDot} ${i === buildsIndex ? s.deckDotActive : ''}`}
+                className={`${s.deckDot} ${i === buildsIndex ? s.deckDotActive : ""}`}
                 onClick={() => setBuildsIndex(i)}
                 aria-label={`Build ${i + 1}`}
               />
@@ -290,10 +410,12 @@ export default function ConfirmedPage() {
           <div className={s.alertInner}>
             <div className={s.alertGlow} />
             <p className={s.alertLine1}>
-              Our team will reach out soon. <strong className={s.alertStrong}>Please reply.</strong>
+              Our team will reach out soon.{" "}
+              <strong className={s.alertStrong}>Please reply.</strong>
             </p>
             <p className={s.alertLine2}>
-              If we don&apos;t hear from you we will assume you won&apos;t show up and cancel your call.
+              If we don&apos;t hear from you we will assume you won&apos;t show
+              up and cancel your call.
             </p>
           </div>
         </div>
@@ -310,16 +432,38 @@ export default function ConfirmedPage() {
         </div>
         {/* Gmail calendar invite mockup */}
         <div data-confirm className={s.calMockup}>
-          <p className={s.calInstruct}>Do both of these in your inbox right now</p>
+          <p className={s.calInstruct}>
+            Do both of these in your inbox right now
+          </p>
 
           <div className={s.calCard}>
             {/* Banner */}
             <div className={s.calBanner}>
               <span className={s.calBannerWarning}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}>
-                  <rect x="3" y="4" width="18" height="17" rx="2" stroke="#5f6368" strokeWidth="1.5" fill="none"/>
-                  <path d="M3 9h18" stroke="#5f6368" strokeWidth="1.5"/>
-                  <path d="M8 2v4M16 2v4" stroke="#5f6368" strokeWidth="1.5" strokeLinecap="round"/>
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  style={{ flexShrink: 0 }}
+                >
+                  <rect
+                    x="3"
+                    y="4"
+                    width="18"
+                    height="17"
+                    rx="2"
+                    stroke="#5f6368"
+                    strokeWidth="1.5"
+                    fill="none"
+                  />
+                  <path d="M3 9h18" stroke="#5f6368" strokeWidth="1.5" />
+                  <path
+                    d="M8 2v4M16 2v4"
+                    stroke="#5f6368"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                  />
                 </svg>
                 This event isn&apos;t in your calendar yet
               </span>
@@ -340,7 +484,9 @@ export default function ConfirmedPage() {
                 <span className={s.calDateNum}>6</span>
               </div>
               <div className={s.calEventInfo}>
-                <div className={s.calEventTitle}>Your Strategy Call: Orovia</div>
+                <div className={s.calEventTitle}>
+                  Your Strategy Call: Orovia
+                </div>
                 <div className={s.calEventMeta}>
                   <span className={s.calEventMetaKey}>When</span>
                   Wed May 6 · 9:00 – 9:45 am PDT
@@ -351,7 +497,9 @@ export default function ConfirmedPage() {
                 </div>
                 <div className={s.calRsvpRow}>
                   <div className={s.calAnnotateWrap}>
-                    <button className={`${s.calRsvpBtn} ${s.calRsvpYes}`}>Yes</button>
+                    <button className={`${s.calRsvpBtn} ${s.calRsvpYes}`}>
+                      Yes
+                    </button>
                     <span className={s.calRing} />
                     <span className={s.calRingLabel}>Step 2</span>
                   </div>
@@ -371,7 +519,8 @@ export default function ConfirmedPage() {
         <div className={s.sectionHeader}>
           <div className={s.sectionEye}>Before Your Call</div>
           <h2 className={s.sectionH2}>
-            Questions answered<br />
+            Questions answered
+            <br />
             <span className={s.gold}>before you ask them.</span>
           </h2>
         </div>
@@ -381,12 +530,14 @@ export default function ConfirmedPage() {
             <div
               key={i}
               data-faq
-              className={`${s.faqItem}${openFaq === i ? ` ${s.faqItemOpen}` : ''}`}
+              className={`${s.faqItem}${openFaq === i ? ` ${s.faqItemOpen}` : ""}`}
               onClick={() => setOpenFaq(openFaq === i ? null : i)}
             >
               <div className={s.faqQ}>
                 <span>{item.q}</span>
-                <span className={s.faqChevron}>{openFaq === i ? '−' : '+'}</span>
+                <span className={s.faqChevron}>
+                  {openFaq === i ? "−" : "+"}
+                </span>
               </div>
               {openFaq === i && <div className={s.faqA}>{item.a}</div>}
             </div>
@@ -401,33 +552,34 @@ export default function ConfirmedPage() {
         <div className={s.proofCloudHead}>
           <div className={s.sectionEye}>Results</div>
           <h2 className={s.sectionH2}>
-            Real partners.<br />
+            Real partners.
+            <br />
             <span className={s.gold}>Real money.</span>
           </h2>
         </div>
         <div className={s.ssTrack}>
           <div className={s.ssInner}>
             {[
-              '/wins/win-0378.png',
-              '/wins/win-0380.png',
-              '/wins/win-0381.png',
-              '/wins/win-0382.png',
-              '/wins/win-0383.png',
-              '/wins/win-0384.png',
-              '/wins/win-0385.png',
-              '/wins/win-0386.png',
-              '/wins/win-0387.png',
-              '/wins/win-0388.png',
-              '/wins/win-0378.png',
-              '/wins/win-0380.png',
-              '/wins/win-0381.png',
-              '/wins/win-0382.png',
-              '/wins/win-0383.png',
-              '/wins/win-0384.png',
-              '/wins/win-0385.png',
-              '/wins/win-0386.png',
-              '/wins/win-0387.png',
-              '/wins/win-0388.png',
+              "/wins/win-0378.png",
+              "/wins/win-0380.png",
+              "/wins/win-0381.png",
+              "/wins/win-0382.png",
+              "/wins/win-0383.png",
+              "/wins/win-0384.png",
+              "/wins/win-0385.png",
+              "/wins/win-0386.png",
+              "/wins/win-0387.png",
+              "/wins/win-0388.png",
+              "/wins/win-0378.png",
+              "/wins/win-0380.png",
+              "/wins/win-0381.png",
+              "/wins/win-0382.png",
+              "/wins/win-0383.png",
+              "/wins/win-0384.png",
+              "/wins/win-0385.png",
+              "/wins/win-0386.png",
+              "/wins/win-0387.png",
+              "/wins/win-0388.png",
             ].map((src, i) => (
               <div key={i} className={s.ssSlide}>
                 <img src={src} alt="Partner win" className={s.ssImg} />
@@ -443,7 +595,8 @@ export default function ConfirmedPage() {
       <section className={s.checkSection}>
         <div className={s.sectionHeader}>
           <h2 className={s.sectionH2}>
-            Essential<br />
+            Essential
+            <br />
             <span className={s.gold}>Checkpoints</span>
           </h2>
         </div>
@@ -452,7 +605,9 @@ export default function ConfirmedPage() {
           {CHECKPOINTS.map((c, i) => (
             <div key={i} data-checkpoint className={s.checkCard}>
               <div className={s.checkMetal} />
-              <span className={s.checkNum}>{String(i + 1).padStart(2, '0')}</span>
+              <span className={s.checkNum}>
+                {String(i + 1).padStart(2, "0")}
+              </span>
               <div>
                 <div className={s.checkLabel}>{c.label}</div>
                 <div className={s.checkBody}>{c.body}</div>
@@ -461,7 +616,6 @@ export default function ConfirmedPage() {
           ))}
         </div>
       </section>
-
     </div>
   );
 }

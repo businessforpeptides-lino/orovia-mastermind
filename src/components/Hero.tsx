@@ -14,7 +14,7 @@ export default function Hero() {
   const [error, setError] = useState<Error | null>(null);
 
   // Google Drive video ID for embed
-  const videoId = "1wj5ie-CjHnhavzTkfRRtTz1gPshteq3L";
+  const videoId = "1FQy62PZ8Jjt7wDxv17IL_PsHfYhcdvJG";
 
   return (
     <section
@@ -84,55 +84,64 @@ export default function Hero() {
         transition={{ duration: 1, delay: 1.4, ease: easeOutExpo }}
         className="liquid-glass relative z-10 mt-10 w-full max-w-[1180px] overflow-hidden md:mt-16"
         style={{
-          aspectRatio: "16 / 9",
           borderRadius: 24,
           boxShadow:
             "0 40px 80px rgba(0,0,0,0.6), 0 0 60px rgba(212,175,55,0.12)",
         }}
       >
-        {videoOk ? (
-          <iframe
-            src={`https://drive.google.com/file/d/${videoId}/preview?autoplay=0`}
-            className="h-full w-full"
-            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
-            allowFullScreen
-          />
-        ) : (
-          <>
-            {error ? (
-              <div
-                style={{
-                  color: "red",
-                  padding: 20,
-                  textAlign: "center",
-                }}
-              >
-                Video error: {error.message}
-              </div>
-            ) : (
-              // Glass card fallback — same dimensions, just a placeholder
-              // so the layout doesn't collapse before the real VSL is dropped in.
-              <div
-                className="flex h-full w-full flex-col items-center justify-center text-center"
-                style={{
-                  background:
-                    "radial-gradient(ellipse 70% 60% at 50% 50%, rgba(212,175,55,0.08), transparent 65%), #0d0d0d",
-                  color: "rgba(244,237,224,0.6)",
-                  fontWeight: 600,
-                  letterSpacing: "0.18em",
-                  textTransform: "uppercase",
-                  fontSize: 12,
-                  padding: 24,
-                }}
-              >
-                <span style={{ color: "var(--gold)", marginBottom: 8 }}>
-                  Orovia
-                </span>
-                <span>VSL coming soon</span>
-              </div>
-            )}
-          </>
-        )}
+        <div
+          style={{ position: "relative", width: "100%", paddingTop: "56.25%" }}
+        >
+          {videoOk ? (
+            <iframe
+              src={`https://drive.google.com/file/d/${videoId}/preview?autoplay=0`}
+              style={{
+                position: "absolute",
+                inset: 0,
+                width: "100%",
+                height: "100%",
+                border: 0,
+              }}
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
+              allowFullScreen
+            />
+          ) : (
+            <>
+              {error ? (
+                <div
+                  style={{
+                    color: "red",
+                    padding: 20,
+                    textAlign: "center",
+                  }}
+                >
+                  Video error: {error.message}
+                </div>
+              ) : (
+                // Glass card fallback — same dimensions, just a placeholder
+                // so the layout doesn't collapse before the real VSL is dropped in.
+                <div
+                  className="flex h-full w-full flex-col items-center justify-center text-center"
+                  style={{
+                    background:
+                      "radial-gradient(ellipse 70% 60% at 50% 50%, rgba(212,175,55,0.08), transparent 65%), #0d0d0d",
+                    color: "rgba(244,237,224,0.6)",
+                    fontWeight: 600,
+                    letterSpacing: "0.18em",
+                    textTransform: "uppercase",
+                    fontSize: 12,
+                    padding: 24,
+                  }}
+                >
+                  <span style={{ color: "var(--gold)", marginBottom: 8 }}>
+                    Orovia
+                  </span>
+                  <span>VSL coming soon</span>
+                </div>
+              )}
+            </>
+          )}
+        </div>
       </motion.div>
 
       {/* TYPEFORM EMBED — `data-tf-live` is hydrated by the embed.js script
