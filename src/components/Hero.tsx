@@ -90,19 +90,25 @@ export default function Hero() {
         }}
       >
         <div
-          style={{ position: "relative", width: "100%", paddingTop: "56.25%" }}
+          style={{
+            position: "relative",
+            width: "100%",
+            aspectRatio: "16/9",
+            maxHeight: "calc(100vh - 100px)",
+            overflow: "hidden",
+          }}
         >
           {videoOk ? (
             <iframe
               src={`https://drive.google.com/file/d/${videoId}/preview?autoplay=0`}
               style={{
                 position: "absolute",
-                inset: 0,
+                top: 0,
+                left: 0,
                 width: "100%",
                 height: "100%",
-                border: 0,
-                objectFit: "contain",
-                objectPosition: "center",
+                border: "none",
+                display: "block",
               }}
               allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
               allowFullScreen
