@@ -12,6 +12,9 @@ export default function Hero() {
   // <video poster="/poster.svg" poster="/poster.svg"> entirely so we don't leave a busted player on the live site.
   const [videoOk, setVideoOk] = useState(true);
   const [error, setError] = useError(null);
+  
+  // Google Drive video ID for embed
+  const videoId = "1wj5ie-CjHnhavzTkfRRtTz1gPshteq3L";
 
   return (
     <section
@@ -71,7 +74,7 @@ export default function Hero() {
         </motion.span>
       </h1>
 
-      {/* VSL PLAYER — graceful fallback when /vsl-placeholder.mp4 is absent.
+      {/* VSL PLAYER — Google Drive embed as temporary solution until YouTube hosting is set up.
           Margin-top tighter on mobile (mt-10) so the player isn't pushed
           below the fold. */}
       <motion.div
@@ -87,19 +90,12 @@ export default function Hero() {
         }}
       >
         {videoOk ? (
-          <video poster="/poster.svg"
-            className="h-full w-full object-cover"
-            controls
-            playsInline
-            preload="auto"
-            onError={e => {
-              console.error('video error', e);
-              setError(e);
-              setVideoOk(false);
-            }}
-          >
-            <source src="/vsl.mp4" type="video/mp4" />
-          </video>
+          <iframe
+            src={`https://drive.google.com/file/d/${videoId}/preview?autoplay=0`}
+            className="h-full w-full"
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
+            allowFullScreen
+          />
         ) : (
           <>
             {error ? (

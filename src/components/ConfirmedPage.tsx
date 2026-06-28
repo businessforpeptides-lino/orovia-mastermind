@@ -58,11 +58,6 @@ export default function ConfirmedPage() {
   const [buildsIndex, setBuildsIndex] = useState(0);
   const buildsTouchX = useRef(0);
 
-  // Video refs and state
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [poster, setPoster] = useState<string | null>(null);
-  const [videoError, setVideoError] = useState<string | null>(null);
-
   const getBuildDeckStyle = (i: number): React.CSSProperties => {
     const n = BUILDS.length;
     const offset = (i - buildsIndex + n) % n;
@@ -71,83 +66,6 @@ export default function ConfirmedPage() {
     if (offset === 0) return { transform: 'translateX(-50%) scale(1)', zIndex: 3, opacity: 1, transition: t };
     if (offset === 1) return { transform: 'translateX(calc(-50% + 60vw)) rotate(6deg) scale(0.84)', zIndex: 2, opacity: 0.75, transition: t };
     return { transform: 'translateX(calc(-50% - 60vw)) rotate(-6deg) scale(0.84)', zIndex: 1, opacity: 0.75, transition: t };
-  };
-
-  // Video event handlers
-  const handleLoadStart = () => {
-    setVideoError(null);
-    // Reset poster when video starts loading
-    setPoster(null);
-  };
-
-  const handleLoadedMetadata = () => {
-    const video = videoRef.current;
-    if (!video) return;
-    
-    // Try to capture first frame as poster
-    tryToCaptureFirstFrame(video);
-  };
-
-  const handleVideoError = (e: React.SyntheticEvent<HTMLVideoElement, Event>) => {
-    const errorMsg = videoRef.current?.error?.message || "Unknown video error";
-    setVideoError(`Failed to load video: ${errorMsg}`);
-    console.error("Video error:", e);
-  };
-
-  const tryToCaptureFirstFrame = (video: HTMLVideoElement) => {
-    // Wait a bit for video to be ready
-    if (video.readyState >= 2) {
-      captureFrameAsPoster(video);
-    } else {
-      const attempt = () => {
-        if (video.readyState >= 2) {
-          captureFrameAsPoster(video);
-        } else if (video.readyState > 0) {
-          setTimeout(attempt, 100);
-        }
-      };
-      setTimeout(attempt, 100);
-    }
-  };
-
-  const captureFrameAsPoster = (video: HTMLVideoElement) => {
-    try {
-      // Create a temporary canvas to capture the frame
-      const canvas = document.createElement("canvas");
-      canvas.width = video.videoWidth;
-      canvas.height = video.videoHeight;
-      const ctx = canvas.getContext("2d");
-      if (!ctx) return;
-      
-      // Draw the current frame
-      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-      
-      // Convert to base64 and set as poster
-      const posterUrl = canvas.toDataURL("image/jpeg", 0.8);
-      setPoster(posterUrl);
-      
-      // Also set it directly on the video element
-      video.poster = posterUrl;
-    } catch (err) {
-      console.warn("Could not capture video frame:", err);
-      // Fallback to generated poster
-      setPoster(generatePlaceholderPoster());
-    }
-  };
-
-  const generatePlaceholderPoster = (): string => {
-    // Generate a simple SVG placeholder with video dimensions or a default size
-    const width = 1280;
-    const height = 720;
-    const svg = `
-      <svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">
-        <rect width="100%" height="100%" fill="#0d0d0d"/>
-        <circle cx="${width/2}" cy="${height/2}" r="${Math.min(width, height) * 0.3}" fill="rgba(212,175,55,0.1)"/>
-        <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="var(--gold)" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="bold">
-          Orovia VSL
-        </text>
-      </svg>`;
-    return `data:image/svg+xml;base64,${btoa(svg)}`;
   };
 
   useEffect(() => {
@@ -257,36 +175,13 @@ export default function ConfirmedPage() {
         </div>
 
         <div data-video-wrap className={s.videoWrap}>
-          <video
-            ref={videoRef}
-            className="w-full h-full object-cover"
-            controls
-            playsInline
-            preload="auto"
-            onLoadStart={handleLoadStart}
-            onLoadedMetadata={handleLoadedMetadata}
-            onError={handleVideoError}
-            poster={poster || "/poster.svg"}
-          >
-            <source
-              src="https://drive.google.com/uc?export=download&confirm=1&id=1FQy62PZ8Jjt7wDxv17IL_PsHfYhcdvJG"
-              type="video/mp4"
-            />
-            <source
-              src="https://drive.google.com/uc?export=download&id=1FQy62PZ8Jjt7wDxv17IL_PsHfYhcdvJG"
-              type="video/mp4"
-            />
-            Your browser does not support the video tag.
-          </video>
-          {videoError && (
-            <div className="bg-red-50 border-l-4 border-red-500 p-4 mt-4">
-              <h3 className="text-red-800 font-medium mb-2">Video Loading Issue</h3>
-              <p className="text-red-600">{videoError}</p>
-              <p className="text-sm text-red-500 mt-2">
-                Try refreshing the page or check your internet connection.
-              </p>
-            </div>
-          )}
+          <iframe
+            src="https://drive.google.com/file/d/1FQy62PZ8Jjt7wDxv17IL_PsHfYhcdvJG/preview?autoplay=0"
+            className="w-full h-full"
+            style={{ aspectRatio: '16/9', borderRadius: '16px' }}
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
+            allowFullScreen
+          />
         </div>
       </section>
       <section className={s.buildsSection}>
