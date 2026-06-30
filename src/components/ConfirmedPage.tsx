@@ -50,86 +50,10 @@ const DISCORD_CARDS = [
   { label: "@marcus_info", accent: "201, 169, 97" },
 ];
 
-const BUILDS = [
-  {
-    url: "oroviawellness.com",
-    name: "Orovia Wellness",
-    href: "https://oroviawellness.com",
-    hue: "201, 169, 97",
-  },
-  {
-    url: "imoriwellness.com",
-    name: "Imori Wellness",
-    href: "https://imoriwellness.com",
-    hue: "196, 30, 58",
-  },
-  {
-    url: "rejuvenare.com",
-    name: "Rejuvenare",
-    href: "https://rejuvenare.com",
-    hue: "45, 122, 122",
-  },
-  {
-    url: "branchroot.com",
-    name: "Branch Root",
-    href: "https://branchroot.com",
-    hue: "60, 179, 113",
-  },
-  {
-    url: "offlinepeptides.com",
-    name: "Offline Peptides",
-    href: "https://offlinepeptides.com",
-    hue: "70, 130, 180",
-  },
-  {
-    url: "evolvixwellness.com",
-    name: "Evolvix Wellness",
-    href: "https://evolvixwellness.com",
-    hue: "147, 112, 219",
-  },
-  {
-    url: "newgenixevolution.com",
-    name: "Newgenix Evolution",
-    href: "https://newgenixevolution.com",
-    hue: "205, 127, 50",
-  },
-];
-
 export default function ConfirmedPage() {
   const rootRef = useRef<HTMLDivElement>(null);
 
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-
-  // Mobile builds deck carousel
-  const [buildsIndex, setBuildsIndex] = useState(0);
-  const buildsTouchX = useRef(0);
-
-  const getBuildDeckStyle = (i: number): React.CSSProperties => {
-    const n = BUILDS.length;
-    const offset = (i - buildsIndex + n) % n;
-    const t = "transform 0.45s cubic-bezier(0.2,0.8,0.2,1), opacity 0.4s ease";
-    // offset 0 = active (center), offset 1 = right peek, offset 2 = left peek
-    if (offset === 0)
-      return {
-        transform: "translateX(-50%) scale(1)",
-        zIndex: 3,
-        opacity: 1,
-        transition: t,
-      };
-    if (offset === 1)
-      return {
-        transform: "translateX(calc(-50% + 60vw)) rotate(6deg) scale(0.84)",
-        zIndex: 2,
-        opacity: 0.75,
-        transition: t,
-      };
-    return {
-      transform: "translateX(calc(-50% - 60vw)) rotate(-6deg) scale(0.84)",
-      zIndex: 1,
-      opacity: 0.75,
-      transition: t,
-    };
-  };
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -168,18 +92,6 @@ export default function ConfirmedPage() {
         ease: "power2.out",
         immediateRender: false,
         scrollTrigger: { trigger: "[data-video-wrap]", start: "top 82%" },
-      });
-
-      // ── Live builds ────────────────────────────────────────────────────────
-      gsap.from("[data-build-card]", {
-        y: 50,
-        opacity: 0,
-        scale: 0.94,
-        duration: 0.7,
-        stagger: 0.12,
-        ease: "power2.out",
-        immediateRender: false,
-        scrollTrigger: { trigger: "[data-builds]", start: "top 82%" },
       });
 
       // ── Alert ──────────────────────────────────────────────────────────────
@@ -295,115 +207,6 @@ export default function ConfirmedPage() {
           </div>
         </div>
       </section>
-      <section className={s.buildsSection}>
-        <div className={s.sectionLabel}>
-          <span className={s.sectionLabelReq}>◆ Live</span>
-          <span>Recent builds &middot; 07</span>
-        </div>
-
-        {/* Desktop grid */}
-        <div data-builds className={s.buildsTrack}>
-          {BUILDS.map((b, i) => (
-            <a
-              key={i}
-              data-build-card
-              href={b.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`${s.buildCard} ${s[`buildCard${i + 1}` as keyof typeof s]}`}
-              style={{ "--hue": b.hue } as React.CSSProperties}
-            >
-              <div className={s.chrome}>
-                <span className={`${s.dot} ${s.dotR}`} />
-                <span className={`${s.dot} ${s.dotY}`} />
-                <span className={`${s.dot} ${s.dotG}`} />
-                <span className={s.chromeUrl}>{b.url}</span>
-              </div>
-              <div className={s.preview}>
-                <div className={s.previewImg} />
-                <div className={s.previewOverlay}>
-                  <span className={s.previewPill}>View live →</span>
-                </div>
-              </div>
-              <div className={s.buildFoot}>
-                <span className={s.buildName}>{b.name}</span>
-                <span className={s.buildCta}>
-                  Visit <span className={s.buildArrow}>→</span>
-                </span>
-              </div>
-            </a>
-          ))}
-        </div>
-
-        {/* Mobile stacked deck */}
-        <div
-          className={s.buildsDeck}
-          onTouchStart={(e) => {
-            buildsTouchX.current = e.touches[0].clientX;
-          }}
-          onTouchEnd={(e) => {
-            const dx = e.changedTouches[0].clientX - buildsTouchX.current;
-            if (Math.abs(dx) < 35) return;
-            setBuildsIndex((i) =>
-              dx < 0
-                ? (i + 1) % BUILDS.length
-                : (i - 1 + BUILDS.length) % BUILDS.length,
-            );
-          }}
-        >
-          {BUILDS.map((b, i) => (
-            <a
-              key={i}
-              href={b.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`${s.buildCard} ${s.buildsDeckCard}`}
-              style={
-                {
-                  "--hue": b.hue,
-                  ...getBuildDeckStyle(i),
-                } as React.CSSProperties
-              }
-              onClick={(e) => {
-                if ((i - buildsIndex + BUILDS.length) % BUILDS.length !== 0) {
-                  e.preventDefault();
-                  setBuildsIndex(i);
-                }
-              }}
-            >
-              <div className={s.chrome}>
-                <span className={`${s.dot} ${s.dotR}`} />
-                <span className={`${s.dot} ${s.dotY}`} />
-                <span className={`${s.dot} ${s.dotG}`} />
-                <span className={s.chromeUrl}>{b.url}</span>
-              </div>
-              <div className={s.preview}>
-                <div className={s.previewImg} />
-                <div className={s.previewOverlay}>
-                  <span className={s.previewPill}>View live →</span>
-                </div>
-              </div>
-              <div className={s.buildFoot}>
-                <span className={s.buildName}>{b.name}</span>
-                <span className={s.buildCta}>
-                  Visit <span className={s.buildArrow}>→</span>
-                </span>
-              </div>
-            </a>
-          ))}
-          <div className={s.deckDots}>
-            {BUILDS.map((_, i) => (
-              <button
-                key={i}
-                className={`${s.deckDot} ${i === buildsIndex ? s.deckDotActive : ""}`}
-                onClick={() => setBuildsIndex(i)}
-                aria-label={`Build ${i + 1}`}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ─────────────────────────────────────────────────────────────────────
           SECTION 4 — Alert
       ───────────────────────────────────────────────────────────────────── */}
